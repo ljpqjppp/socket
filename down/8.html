@@ -1,0 +1,1801 @@
+1fd08
+<!DOCTYPE html>   
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]> <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]> <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="zh-CN" prefix="og: http://ogp.me/ns#" class="no-js"> <!--<![endif]-->
+
+
+<!-- BEGIN head -->
+<head>
+
+	<!-- Title -->
+	
+	
+	<!-- Meta Tags -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<!-- Favicon & Mobileicon -->
+	<link rel="shortcut icon" href="http://jbcdn2.b0.upaiyun.com/2013/12/favicon.png" />
+	<link rel="apple-touch-icon" href="http://jbcdn2.b0.upaiyun.com/2013/12/jobbole-blog-logo-mobile.png" />
+	
+	<!-- RSS, Atom & Pingbacks -->
+		<link rel="alternate" title="文章 &#8211; 伯乐在线 RSS Feed" href="http://blog.jobbole.com/feed/" />
+		<link rel="alternate" title="RSS .92" href="http://blog.jobbole.com/feed/rss/" />
+	<link rel="alternate" title="Atom 0.3" href="http://blog.jobbole.com/feed/atom/" />
+	<link rel="pingback" href="http://blog.jobbole.com/xmlrpc.php" />
+	
+	<!-- Theme Hook -->
+	
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.4.13 - http://yoast.com/wordpress/seo/ -->
+<title>“三次握手，四次挥手”你真的懂吗？ - 文章 - 伯乐在线</title>
+<meta name="description" content="作为程序员，要有“刨根问底”的精神。知其然，更要知其所以然。这篇文章希望能抽丝剥茧，还原背后的原理。"/>
+<link rel="canonical" href="http://blog.jobbole.com/114633/" />
+<meta property='og:locale' content='zh_CN'/>
+<meta property='og:type' content='article'/>
+<meta property='og:title' content='“三次握手，四次挥手”你真的懂吗？ - 文章 - 伯乐在线'/>
+<meta property='og:description' content='作为程序员，要有“刨根问底”的精神。知其然，更要知其所以然。这篇文章希望能抽丝剥茧，还原背后的原理。'/>
+<meta property='og:url' content='http://blog.jobbole.com/114633/'/>
+<meta property='og:site_name' content='文章 - 伯乐在线'/>
+<meta property='og:image' content='http://blog.jobbole.com//upload-images.jianshu.io/upload_images/12234098-40089b5b24b9d38b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'/>
+<meta property='og:image' content='http://blog.jobbole.com//upload-images.jianshu.io/upload_images/12234098-40f65020a755ca18?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'/>
+<meta property='og:image' content='http://blog.jobbole.com//upload-images.jianshu.io/upload_images/12234098-8604b533d42457b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'/>
+<meta property='og:image' content='http://blog.jobbole.com//upload-images.jianshu.io/upload_images/12234098-3754de754cbcf2af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'/>
+<meta property='og:image' content='http://blog.jobbole.com//upload-images.jianshu.io/upload_images/12234098-36b3c46688c685c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'/>
+<meta property='og:image' content='http://blog.jobbole.com//upload-images.jianshu.io/upload_images/12234098-e6b04f3e9bebdac4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'/>
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel='stylesheet' id='dashicons-css'  href='http://blog.jobbole.com/wp-includes/css/dashicons.min.css?ver=4.5.17' type='text/css' media='all' />
+<link rel='stylesheet' id='thickbox-css'  href='http://blog.jobbole.com/wp-includes/js/thickbox/thickbox.css?ver=4.5.17' type='text/css' media='all' />
+<link rel='stylesheet' id='fancybox-css-css'  href='http://blog.jobbole.com/wp-content/plugins/jobbole-wp-plugin/css/jquery.fancybox.css?ver=2.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='jobbole-wp-css-css'  href='http://blog.jobbole.com/wp-content/plugins/jobbole-wp-plugin/css/jobbole-wp-plugin.css?ver=1.0.30' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon_colorbox_css-css'  href='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/util/tag-editor/colorbox/colorbox.css?ver=2.7.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon_style-css'  href='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/css/src/crayon_style.css?ver=2.7.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon_global_style-css'  href='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/css/src/global_style.css?ver=2.7.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-github-css'  href='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/themes/github/github.css?ver=2.7.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=2.7.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='v48fv_images-css'  href='http://blog.jobbole.com/wp-content/plugins/mu-widgets/library/base/public/css/images.css?ver=1.2.v48fv' type='text/css' media='all' />
+<link rel='stylesheet' id='v48fv_front-css'  href='http://blog.jobbole.com/wp-content/plugins/mu-widgets/library/base/public/css/front.css?ver=1.2.v48fv' type='text/css' media='all' />
+<link rel='stylesheet' id='v48fv_common-css'  href='http://blog.jobbole.com/wp-content/plugins/mu-widgets/library/base/public/css/common.css?ver=1.2.v48fv' type='text/css' media='all' />
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/jobbole-wp-plugin/js/jquery.fancybox.pack.js?ver=2.1.5'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/jobbole-wp-plugin/js/superfish.js?ver=1.4.8'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/jobbole-wp-plugin/js/menu-effects.js?ver=1.5.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var JobboleAjax = {"ajaxurl":"http:\/\/blog.jobbole.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/jobbole-wp-plugin/js/jobbole-wp-plugin.js?ver=1.0.62'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/util/tag-editor/colorbox/jquery.colorbox-min.js?ver=2.7.1.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"2.7.1.1","is_admin":"0","ajaxurl":"http:\/\/blog.jobbole.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u4f7f\u7528 %s \u590d\u5236\uff0c\u4f7f\u7528 %s \u7c98\u8d34\u3002","minimize":"\u70b9\u51fb\u5c55\u5f00\u4ee3\u7801"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/js/src/util.js?ver=2.7.1.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonTagEditorSettings = {"home_url":"http:\/\/blog.jobbole.com","css":"crayon-te","css_selected":"crayon-selected","code_css":"#crayon-code","url_css":"#crayon-url","url_info_css":"#crayon-te-url-info","lang_css":"#crayon-lang","title_css":"#crayon-title","mark_css":"#crayon-mark","range_css":"#crayon-range","inline_css":"crayon-inline","inline_hide_css":"crayon-hide-inline","inline_hide_only_css":"crayon-hide-inline-only","hl_css":"#crayon-highlight","switch_html":"#content-html","switch_tmce":"#content-tmce","tinymce_button_generic":".mce-btn","tinymce_button":"a.mce_crayon_tinymce,.mce-i-crayon_tinymce","tinymce_button_unique":"mce_crayon_tinymce","tinymce_highlight":"mce-active","submit_css":"#crayon-te-ok","cancel_css":"#crayon-te-cancel","content_css":"#crayon-te-content","dialog_title_css":"#crayon-te-title","submit_wrapper_css":"#crayon-te-submit-wrapper","data_value":"data-value","attr_sep":":","css_sep":"_","fallback_lang":"default","add_text":"Add Code","edit_text":"Edit Code","quicktag_text":"crayon","submit_add":"\u63d2\u5165","submit_edit":"\u4fdd\u5b58","bar":"#crayon-te-bar","bar_content":"#crayon-te-bar-content","extensions":{"scpt":"applescript","applescript":"applescript","swf":"as","fla":"as","cs":"c#","h":"c++","hh":"c++","hpp":"c++","hxx":"c++","h++":"c++","cc":"c++","cpp":"c++","cxx":"c++","c++":"c++","pas":"delphi","java":"java","class":"java","jar":"java","mv":"miva","mvc":"miva","mvt":"miva","m":"objc","mm":"objc","psc":"papyrus","pl":"perl","py":"python","pyw":"python","pyc":"python","pyo":"python","pyd":"python","rb":"ruby","rbx":"ruby","rhtml":"ruby","vbs":"vb"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/util/tag-editor/crayon_tag_editor.js?ver=2.7.1.1'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/js/src/jquery.popup.js?ver=2.7.1.1'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/js/src/crayon.js?ver=2.7.1.1'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/modernizr.js?ver=2.5.3'></script>
+<link rel='https://api.w.org/' href='http://blog.jobbole.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.jobbole.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.jobbole.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='http://blog.jobbole.com/?p=114633' />
+<link rel="alternate" type="application/json+oembed" href="http://blog.jobbole.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.jobbole.com%2F114633%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://blog.jobbole.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.jobbole.com%2F114633%2F&#038;format=xml" />
+    <script type="text/javascript">
+        jQuery(function($){
+            $('.comment-reply-link').click(function(e){
+                e.preventDefault();
+                var args = $(this).data('onclick');
+                args = args.replace(/.*\(|\)/gi, '').replace(/\"|\s+/g, '');
+                args = args.split(',');
+                tinymce.EditorManager.execCommand('mceRemoveEditor', true, 'comment_editor');
+                addComment.moveForm.apply( addComment, args );
+                tinymce.EditorManager.execCommand('mceAddEditor', true, 'comment_editor');
+            });
+
+            $('#cancel-comment-reply-link').click(function(e){
+                e.preventDefault();
+                tinymce.EditorManager.execCommand('mceRemoveEditor', true, 'comment_editor');
+                tinymce.EditorManager.execCommand('mceAddEditor', true, 'comment_editor');
+            });
+        });
+    </script>
+	
+	<!-- CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="http://blog.jobbole.com/wp-content/themes/jobboleblogv3/style.css?ver=1.0.67">
+	<style>
+				*::selection { background: #0099cc; }
+		*::-moz-selection { background: #0099cc; }
+		body {
+            background: #ffffff         }
+
+        a,
+        .tabs ul.nav li a:hover,
+        .tabs ul.nav li.active a,
+        .dropcap,
+        .toggle.hover .toggle-title,
+        li.comment cite a:hover,
+        h3.widget-title,
+        .post-meta .meta-title:hover,
+        .the-latest a:hover h4,
+        .aw_socialcounter_widget li a:hover,
+        .aw_tabbed_widget #tab-latest-comments a:hover
+        {
+            color: #0099cc;
+        }
+
+		a:hover { color: #b30000; }
+		input:focus, textarea:focus { border-color: #0099cc; }
+
+		#searchsubmit,
+        .highlight,
+        .aw_tabbed_widget .tabs ul.nav li.active a, footer .aw_tabbed_widget .tabs ul.nav li.active a,
+        #top .aw_tabbed_widget .tabs ul.nav li.active a,
+        .aw_tabbed_widget .tabs ul.nav li a:hover,
+        footer .aw_tabbed_widget .tabs ul.nav li a:hover,
+        #top .aw_tabbed_widget .tabs ul.nav li a:hover,
+        .aw_twitter_widget .twitter-icon, .testimonial-icon,
+        #top-closed:hover,
+        .flex-control-nav a:hover,
+        .flex-control-nav a.flex-active {
+            background-color: #0099cc;
+        }
+
+		.submit { background-color: #0099cc; border-color: #007399; }
+		.submit:hover { background-color: #b30000; border-color: #860000; }
+		#searchsubmit:hover { background-color: #b30000; }
+		.toggle.hover .toggle-icon { border-top-color: #0099cc; }
+		.toggle.hover.active .toggle-icon { border-bottom-color: #0099cc; }
+		.flex-direction-nav li .flex-prev:hover { border-right-color: #0099cc; }
+		.flex-direction-nav li .flex-next:hover { border-left-color: #0099cc; }
+		@media only screen and (min-width: 768px) and (max-width: 959px) {
+			.aw_tabbed_widget .tabs ul.nav li a:hover, .tabs ul.nav li.active a { color: #0099cc; }
+		}
+		@media screen and (max-width: 767px) {
+			.tabs ul.nav li a:hover, .tabs ul.nav li.active a { color: #0099cc; }
+		}
+	</style>
+
+	<!--[if IE 8]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+    <![endif]-->
+
+	<!-- Links: RSS + Atom Syndication + Pingback etc. -->
+	<link rel="alternate" type="application/rss+xml" title="文章 &#8211; 伯乐在线 RSS Feed" href="http://blog.jobbole.com/feed/" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="http://blog.jobbole.com/feed/rss/" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://blog.jobbole.com/feed/atom/" />
+	<link rel="pingback" href="http://blog.jobbole.com/xmlrpc.php" />
+
+<!-- END head -->
+</head>
+
+<!-- BEGIN body -->
+<body class="single single-post postid-114633 single-format-standard chrome">
+
+		
+	    <nav id="top-nav" class="menu-nav">
+
+        <!-- BEGIN .container -->
+        <div class="container">
+
+            <div class="grid-7 hide-on-480 hide-on-767">
+                <ul id="menu-main-menu" class="menu left">
+                    <li class="menu-item">
+                        <a href="http://www.jobbole.com">首页</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="http://top.jobbole.com">资讯</a>
+                    </li>
+                    <li class="menu-item">
+                        <span><a href="http://blog.jobbole.com">文章 <i class="fa fa-angle-double-down"></i></a></span>
+                        <ul class="sub-menu sf-js-enabled">
+                            <li class="menu-item"><a href="http://blog.jobbole.com">全部文章</a></li>
+                            <li class="menu-item"><a href="http://web.jobbole.com">Web前端</a></li>
+                            <li class="menu-item"><a href="http://python.jobbole.com">Python开发</a></li>
+                            <li class="menu-item"><a href="http://www.importnew.com/?utm_source=home-top-nav">Java技术</a></li>
+                            <li class="menu-item"><a href="http://android.jobbole.com">Android应用</a></li>
+                            <li class="menu-item"><a href="http://ios.jobbole.com">iOS应用</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="http://hao.jobbole.com">资源</a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="http://date.jobbole.com"><i class="fa fa-heart-o pinkiconcolor"></i> 相亲</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="grid-5">
+                <ul id="menu-main-menu" class="menu">
+                    <li class="menu-item hide-on-768-wider left">
+                        <span><a href="#">频道 <i class="fa fa-angle-double-down"></i></a></span>
+                        <ul class="sub-menu sf-js-enabled">
+                            <li class="menu-item"><a href="http://www.jobbole.com">首页</a></li>
+                            <li class="menu-item"><a href="http://top.jobbole.com">资讯</a></li>
+                            <li class="menu-item"><a href="http://group.jobbole.com">小组</a></li>
+                            <li class="menu-item"><a href="http://date.jobbole.com">相亲 <i class="fa fa-heart-o pinkiconcolor"></i></a></li>
+                            <li class="menu-item"><a href="http://hao.jobbole.com">资源</a></li>
+                            <li class="menu-item"><a href="http://blog.jobbole.com">全部文章</a></li>
+                            <li class="menu-item"><a href="http://web.jobbole.com">前端</a></li>
+                            <li class="menu-item"><a href="http://python.jobbole.com">Python</a></li>
+                            <li class="menu-item"><a href="http://www.importnew.com/">Java</a></li>
+                            <li class="menu-item"><a href="http://android.jobbole.com">安卓</a></li>
+                            <li class="menu-item"><a href="http://ios.jobbole.com">iOS</a></li>
+                        </ul>
+                    </li>
+
+                                            <li class="menu-item"><a href="http://www.jobbole.com/login?redirect=http%3A%2F%2Fblog.jobbole.com%2F114633%2F"><i class="fa fa-sign-in"></i> 登录</a></li>
+                        <li class="menu-item"><a href="http://www.jobbole.com/register"><i class="fa fa-user-plus"></i> 注册</a></li>
+                    
+                    
+                    <li class="menu-item"><a title="帮助" href="http://blog.jobbole.com/87622/"><i class="fa fa-question-circle fa-lg"></i></a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+
+        </div>
+        <!-- END .container -->
+
+    </nav>
+    <!-- END #top-nav -->
+  	
+	<!-- BEGIN #wrapper -->
+	<div id="wrapper" class="container">
+
+		<!-- BEGIN header -->
+		<header>
+		
+						
+			<div class="header-wrapper">
+								
+				<!-- BEGIN #logo -->
+				<div id="logo" class="leaderboard-true">
+                    <a href="http://blog.jobbole.com"><img src="http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/jobbole-logo.png" alt="文章 &#8211; 伯乐在线" /></a>
+				</div>
+				<!-- END #logo -->
+				
+				<!-- BEGIN #leaderboard -->
+				<div id="leaderboard">
+				
+					<a href='http://date.jobbole.com/4164/' target='_blank'><img width='728' height='90' src='http://wx2.sinaimg.cn/mw690/bfdcef89gy1ffimc8bgf3j20k802i3zn.jpg' /></a>				
+				</div>
+				<!-- END #leaderboard -->
+				
+				<div class="clear"></div>
+			
+			</div>
+			
+						
+			<div class="clear"></div>
+
+            			<!-- BEGIN #main-nav -->
+			<nav id="main-nav" class="grid-12 menu-nav">
+                <div class="menu-sub-menu-container"><ul id="main-nav-menu" class="menu"><li id="menu-item-33290" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33290"><a href="http://blog.jobbole.com/">首页</a></li>
+<li id="menu-item-33406" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-33406"><a href="http://blog.jobbole.com/all-posts/">最新文章</a></li>
+<li id="menu-item-33390" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-33390"><a href="http://blog.jobbole.com/category/career/">IT 职场</a></li>
+<li id="menu-item-81047" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-81047"><a href="http://web.jobbole.com">前端</a>
+<ul class="sub-menu">
+	<li id="menu-item-107327" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-107327"><a href="http://web.jobbole.com/category/javascript-2/">JavaScript</a></li>
+	<li id="menu-item-107329" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-107329"><a href="http://web.jobbole.com/category/html5/">HTML5</a></li>
+	<li id="menu-item-107328" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-107328"><a href="http://web.jobbole.com/category/css/">CSS</a></li>
+</ul>
+</li>
+<li id="menu-item-107321" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-107321"><a href="#">后端</a>
+<ul class="sub-menu">
+	<li id="menu-item-81218" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81218"><a href="http://python.jobbole.com">Python</a></li>
+	<li id="menu-item-53194" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-53194"><a href="http://www.importnew.com">Java</a></li>
+	<li id="menu-item-57616" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-57616"><a href="http://blog.jobbole.com/category/c-cpp/">C/C++</a></li>
+	<li id="menu-item-57003" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-57003"><a href="http://blog.jobbole.com/category/php-programmer/">PHP</a></li>
+	<li id="menu-item-97173" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-97173"><a href="http://blog.jobbole.com/tag/net/">.NET</a></li>
+	<li id="menu-item-55603" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55603"><a href="http://blog.jobbole.com/category/ruby/">Ruby</a></li>
+	<li id="menu-item-70347" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-70347"><a href="http://blog.jobbole.com/category/go/">Go</a></li>
+</ul>
+</li>
+<li id="menu-item-107322" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-107322"><a href="#">移动端</a>
+<ul class="sub-menu">
+	<li id="menu-item-81220" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81220"><a href="http://android.jobbole.com">Android</a></li>
+	<li id="menu-item-81219" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81219"><a href="http://ios.jobbole.com">iOS</a></li>
+</ul>
+</li>
+<li id="menu-item-107323" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-107323"><a href="http://blog.jobbole.com/tag/database/">数据库</a></li>
+<li id="menu-item-107324" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-107324"><a href="#">运维</a>
+<ul class="sub-menu">
+	<li id="menu-item-55604" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55604"><a href="http://blog.jobbole.com/tag/linux/">Linux</a></li>
+	<li id="menu-item-55607" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55607"><a href="http://blog.jobbole.com/tag/unix/">UNIX</a></li>
+</ul>
+</li>
+<li id="menu-item-107326" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-107326"><a href="#">其他技术</a>
+<ul class="sub-menu">
+	<li id="menu-item-55606" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55606"><a href="http://blog.jobbole.com/tag/git/">Git</a></li>
+	<li id="menu-item-89963" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-89963"><a href="http://blog.jobbole.com/tag/machinelearning/">机器学习</a></li>
+	<li id="menu-item-55635" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55635"><a href="http://blog.jobbole.com/tag/algorithm/">算法</a></li>
+	<li id="menu-item-55612" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55612"><a href="http://blog.jobbole.com/tag/%e6%b5%8b%e8%af%95/">测试</a></li>
+	<li id="menu-item-55618" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55618"><a href="http://blog.jobbole.com/tag/%e5%ae%89%e5%85%a8/">信息安全</a></li>
+	<li id="menu-item-55636" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55636"><a href="http://blog.jobbole.com/tag/vim/">Vim</a></li>
+</ul>
+</li>
+</ul></div>				<div class="clear"></div>
+			</nav>
+			<!-- END #main-nav -->
+                        <div class="clear"></div>
+
+		</header>
+		<!-- END header -->
+		
+		<div id="breadcrumb" class="grid-12 margin-20"><div class="breadcrumb-wrapper"><!-- Breadcrumb NavXT 4.4.0 -->
+<a title="Go to 伯乐在线." href="http://www.jobbole.com" class="main-home">伯乐在线</a> &gt; <a href="http://blog.jobbole.com" class="home">首页</a> &gt; <a href="http://blog.jobbole.com/all-posts/" class="post-root post-post">所有文章</a> &gt; <a href="http://blog.jobbole.com/category/it-tech/" class="category">IT技术</a> &gt; “三次握手，四次挥手”你真的懂吗？</div></div><div class="clear"></div>
+
+<!-- BEGIN .grid-8 -->
+<div class="grid-8">
+
+		
+	<!-- BEGIN .post -->
+<div class="post-114633 post type-post status-publish format-standard hentry category-it-tech tag-tcp odd" id="post-114633">
+	
+	<!-- BEGIN .entry-header -->
+	<div class="entry-header">
+	
+				
+		<h1>“三次握手，四次挥手”你真的懂吗？</h1>
+		
+							
+	</div>
+	<!-- BEGIN .entry-header -->
+	
+	<!-- BEGIN .entry-meta -->
+	<div class="entry-meta">
+	
+		<p class="entry-meta-hide-on-mobile">
+
+            2019/01/09 &middot;  <a href="http://blog.jobbole.com/category/it-tech/" rel="category tag">IT技术</a>
+            
+                            &middot; <a href="#article-comment"> 2 评论 </a>
+            
+
+            
+             &middot;  <a href="http://blog.jobbole.com/tag/tcp/">TCP</a>
+            
+</p>
+
+<!-- JiaThis Button BEGIN -->
+<!-- div class="jiathis_style" style="display: block; margin: 0 0px; clear: both;"><span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_weixin"></a>
+<a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_fb"></a>
+<a class="jiathis_button_douban"></a>
+<a class="jiathis_button_readitlater"></a>
+<a class="jiathis_button_evernote"></a>
+<a class="jiathis_button_ydnote"></a>
+<a href="http://www.jiathis.com/share?uid=1745061" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div -->
+<!-- JiaThis Button END -->
+
+
+	</div>
+	<!-- END .entry-meta -->
+
+	<!-- BEGIN .entry -->
+	<div class="entry">
+
+        			<div class="textwidget"></div>
+		
+		<div class='copyright-area'>原文出处： <a target='_blank' href='https://www.cnblogs.com/qcrao-2018/p/10182185.html'>Stefno</a>&nbsp;&nbsp;&nbsp;</div><p>记得刚毕业找工作面试的时候，经常会被问到：你知道“3次握手，4次挥手”吗？这时候我会“胸有成竹”地“背诵”前期准备好的“答案”，第一次怎么怎么，第二次……答完就没有下文了，面试官貌似也没有深入下去的意思，深入下去我也不懂，皆大欢喜！</p>
+<p>作为程序员，要有“刨根问底”的精神。知其然，更要知其所以然。这篇文章希望能抽丝剥茧，还原背后的原理。</p>
+<h1 id="什么是3次握手4次挥手">什么是“3次握手，4次挥手”</h1>
+<p>TCP是一种面向连接的单播协议，在发送数据前，通信双方必须在彼此间建立一条连接。所谓的“连接”，其实是客户端和服务器的内存里保存的一份关于对方的信息，如ip地址、端口号等。</p>
+<p>TCP可以看成是一种字节流，它会处理IP层或以下的层的丢包、重复以及错误问题。在连接的建立过程中，双方需要交换一些连接的参数。这些参数可以放在TCP头部。</p>
+<p>TCP提供了一种可靠、面向连接、字节流、传输层的服务，采用三次握手建立一个连接。采用4次挥手来关闭一个连接。</p>
+<h2 id="tcp服务模型">TCP服务模型</h2>
+<p>在了解了建立连接、关闭连接的“三次握手和四次挥手”后，我们再来看下TCP相关的东西。</p>
+<p>一个TCP连接由一个4元组构成，分别是两个IP地址和两个端口号。一个TCP连接通常分为三个阶段：启动、数据传输、退出（关闭）。</p>
+<p>当TCP接收到另一端的数据时，它会发送一个确认，但这个确认不会立即发送，一般会延迟一会儿。ACK是累积的，一个确认字节号N的ACK表示所有直到N的字节（不包括N）已经成功被接收了。这样的好处是如果一个ACK丢失，很可能后续的ACK就足以确认前面的报文段了。</p>
+<p>一个完整的TCP连接是双向和对称的，数据可以在两个方向上平等地流动。给上层应用程序提供一种<code>双工服务</code>。一旦建立了一个连接，这个连接的一个方向上的每个TCP报文段都包含了相反方向上的报文段的一个ACK。</p>
+<p>序列号的作用是使得一个TCP接收端可丢弃重复的报文段，记录以杂乱次序到达的报文段。因为TCP使用IP来传输报文段，而IP不提供重复消除或者保证次序正确的功能。另一方面，TCP是一个字节流协议，绝不会以杂乱的次序给上层程序发送数据。因此TCP接收端会被迫先保持大序列号的数据不交给应用程序，直到缺失的小序列号的报文段被填满。</p>
+<h2 id="tcp头部">TCP头部</h2>
+<p><img src="//upload-images.jianshu.io/upload_images/12234098-40089b5b24b9d38b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="tcp header" /></p>
+<p>源端口和目的端口在TCP层确定双方进程，序列号表示的是报文段数据中的第一个字节号，ACK表示确认号，该确认号的发送方期待接收的下一个序列号，即最后被成功接收的数据字节序列号加1，这个字段只有在ACK位被启用的时候才有效。</p>
+<p>当新建一个连接时，从客户端发送到服务端的第一个报文段的SYN位被启用，这称为SYN报文段，这时序列号字段包含了在本次连接的这个方向上要使用的第一个序列号，即初始序列号<code>ISN</code>，之后发送的数据是ISN加1，因此SYN位字段会<code>消耗</code>一个序列号，这意味着使用重传进行可靠传输。而不消耗序列号的ACK则不是。</p>
+<p>头部长度（图中的数据偏移）以32位字为单位，也就是以4bytes为单位，它只有4位，最大为15，因此头部最大长度为60字节，而其最小为5，也就是头部最小为20字节（可变选项为空）。</p>
+<p>ACK —— 确认，使得确认号有效。<br />
+RST —— 重置连接（经常看到的reset by peer）就是此字段搞的鬼。<br />
+SYN —— 用于初如化一个连接的序列号。<br />
+FIN —— 该报文段的发送方已经结束向对方发送数据。</p>
+<p>当一个连接被建立或被终止时，交换的报文段只包含TCP头部，而没有数据。</p>
+<h2 id="状态转换">状态转换</h2>
+<p>三次握手和四次挥手的状态转换如下图。<br />
+<img src="//upload-images.jianshu.io/upload_images/12234098-40f65020a755ca18?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="tcp connect" /></p>
+<h1 id="为什么要三次握手四次挥手">为什么要“三次握手，四次挥手”</h1>
+<h2 id="三次握手">三次握手</h2>
+<p>换个易于理解的视角来看为什么要3次握手。</p>
+<p>客户端和服务端通信前要进行连接，“3次握手”的作用就是<code>双方都能明确自己和对方的收、发能力是正常的</code>。</p>
+<p><code>第一次握手</code>：客户端发送网络包，服务端收到了。这样服务端就能得出结论：客户端的发送能力、服务端的接收能力是正常的。</p>
+<p><code>第二次握手</code>：服务端发包，客户端收到了。这样客户端就能得出结论：服务端的接收、发送能力，客户端的接收、发送能力是正常的。<br />
+从客户端的视角来看，我接到了服务端发送过来的响应数据包，说明服务端接收到了我在第一次握手时发送的网络包，并且成功发送了响应数据包，这就说明，服务端的接收、发送能力正常。而另一方面，我收到了服务端的响应数据包，说明我第一次发送的网络包成功到达服务端，这样，我自己的发送和接收能力也是正常的。</p>
+<p><code>第三次握手</code>：客户端发包，服务端收到了。这样服务端就能得出结论：客户端的接收、发送能力，服务端的发送、接收能力是正常的。<br />
+第一、二次握手后，服务端并不知道客户端的接收能力以及自己的发送能力是否正常。而在第三次握手时，服务端收到了客户端对第二次握手作的回应。从服务端的角度，我在第二次握手时的响应数据发送出去了，客户端接收到了。所以，我的发送能力是正常的。而客户端的接收能力也是正常的。</p>
+<p>经历了上面的三次握手过程，客户端和服务端都确认了自己的接收、发送能力是正常的。之后就可以正常通信了。</p>
+<p>每次都是接收到数据包的一方可以得到一些结论，发送的一方其实没有任何头绪。我虽然有发包的动作，但是我怎么知道我有没有发出去，而对方有没有接收到呢？</p>
+<p>而从上面的过程可以看到，最少是需要三次握手过程的。两次达不到让双方都得出自己、对方的接收、发送能力都正常的结论。其实每次收到网络包的一方至少是可以得到：对方的发送、我方的接收是正常的。而每一步都是有关联的，下一次的“响应”是由于第一次的“请求”触发，因此每次握手其实是可以得到额外的结论的。比如第三次握手时，服务端收到数据包，表明看服务端只能得到客户端的发送能力、服务端的接收能力是正常的，但是结合第二次，说明服务端在第二次发送的响应包，客户端接收到了，并且作出了响应，从而得到额外的结论：客户端的接收、服务端的发送是正常的。</p>
+<p>用表格总结一下：</p>
+<table>
+<thead>
+<tr>
+<th>视角</th>
+<th>客收</th>
+<th>客发</th>
+<th>服收</th>
+<th>服发</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>客视角</td>
+<td>二</td>
+<td>一 + 二</td>
+<td>一 + 二</td>
+<td>二</td>
+</tr>
+<tr>
+<td>服视角</td>
+<td>二 + 三</td>
+<td>一</td>
+<td>一</td>
+<td>二 + 三</td>
+</tr>
+</tbody>
+</table>
+<h2 id="四次挥手">四次挥手</h2>
+<p>TCP连接是双向传输的对等的模式，就是说双方都可以同时向对方发送或接收数据。当有一方要关闭连接时，会发送指令告知对方，我要关闭连接了。这时对方会回一个ACK，此时一个方向的连接关闭。但是另一个方向仍然可以继续传输数据，等到发送完了所有的数据后，会发送一个FIN段来关闭此方向上的连接。接收方发送ACK确认关闭连接。注意，接收到FIN报文的一方只能回复一个ACK, 它是无法马上返回对方一个FIN报文段的，因为结束数据传输的“指令”是上层应用层给出的，我只是一个“搬运工”，我无法了解<code>“上层的意志”</code>。</p>
+<h1 id="三次握手四次挥手怎么完成">“三次握手，四次挥手”怎么完成？</h1>
+<p>其实3次握手的目的并不只是让通信双方都了解到一个连接正在建立，还在于利用数据包的选项来传输特殊的信息，交换初始序列号ISN。</p>
+<p>3次握手是指发送了3个报文段，4次挥手是指发送了4个报文段。注意，SYN和FIN段都是会利用重传进行可靠传输的。</p>
+<p><img src="//upload-images.jianshu.io/upload_images/12234098-8604b533d42457b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="三次握手" /></p>
+<h2 id="三次握手-1">三次握手</h2>
+<ol>
+<li>客户端发送一个SYN段，并指明客户端的初始序列号，即ISN(c).</li>
+<li>服务端发送自己的SYN段作为应答，同样指明自己的ISN(s)。为了确认客户端的SYN，将ISN(c)+1作为ACK数值。这样，每发送一个SYN，序列号就会加1. 如果有丢失的情况，则会重传。</li>
+<li>为了确认服务器端的SYN，客户端将ISN(s)+1作为返回的ACK数值。</li>
+</ol>
+<h2 id="四次挥手-1">四次挥手</h2>
+<p><img src="//upload-images.jianshu.io/upload_images/12234098-3754de754cbcf2af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="四次挥手" /></p>
+<ol>
+<li>客户端发送一个FIN段，并包含一个希望接收者看到的自己当前的序列号K. 同时还包含一个ACK表示确认对方最近一次发过来的数据。</li>
+<li>服务端将K值加1作为ACK序号值，表明收到了上一个包。这时上层的应用程序会被告知另一端发起了关闭操作，通常这将引起应用程序发起自己的关闭操作。</li>
+<li>服务端发起自己的FIN段，ACK=K+1, Seq=L</li>
+<li>客户端确认。ACK=L+1</li>
+</ol>
+<h2 id="为什么建立连接是三次握手而关闭连接却是四次挥手呢">为什么建立连接是三次握手，而关闭连接却是四次挥手呢？</h2>
+<p>这是因为服务端在LISTEN状态下，收到建立连接请求的SYN报文后，把ACK和SYN放在一个报文里发送给客户端。而关闭连接时，当收到对方的FIN报文时，仅仅表示对方不再发送数据了但是还能接收数据，己方是否现在关闭发送数据通道，需要上层应用来决定，因此，己方ACK和FIN一般都会分开发送。</p>
+<h1 id="三次握手四次挥手进阶">“三次握手，四次挥手”进阶</h1>
+<h2 id="isn">ISN</h2>
+<p>三次握手的一个重要功能是客户端和服务端交换ISN(Initial Sequence Number), 以便让对方知道接下来接收数据的时候如何按序列号组装数据。</p>
+<p>如果ISN是固定的，攻击者很容易猜出后续的确认号。</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-5ca312983f836228781840" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+ISN = M + F(localhost, localport, remotehost, remoteport)</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ca312983f836228781840-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ca312983f836228781840-1"><span class="crayon-v">ISN</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">M</span><span class="crayon-h"> </span><span class="crayon-o">+</span><span class="crayon-h"> </span><span class="crayon-e">F</span><span class="crayon-sy">(</span><span class="crayon-v">localhost</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">localport</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">remotehost</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">remoteport</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0009 seconds] -->
+<p>M是一个计时器，每隔4毫秒加1。<br />
+F是一个Hash算法，根据源IP、目的IP、源端口、目的端口生成一个随机数值。要保证hash算法不能被外部轻易推算得出。</p>
+<h2 id="序列号回绕">序列号回绕</h2>
+<p>因为ISN是随机的，所以序列号容易就会超过2^31-1. 而tcp对于丢包和乱序等问题的判断都是依赖于序列号大小比较的。此时就出现了所谓的tcp序列号回绕（sequence wraparound）问题。怎么解决？</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-5ca312983f842853479394" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+/*
+* The next routines deal with comparing 32 bit unsigned ints
+* and worry about wraparound (automatic with unsigned arithmetic).
+*/
+static inline int before(__u32 seq1, __u32 seq2)
+{
+    return (__s32)(seq1-seq2) &lt; 0;
+}
+
+#define after(seq2, seq1) before(seq1, seq2)</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ca312983f842853479394-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f842853479394-2">2</div><div class="crayon-num" data-line="crayon-5ca312983f842853479394-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f842853479394-4">4</div><div class="crayon-num" data-line="crayon-5ca312983f842853479394-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f842853479394-6">6</div><div class="crayon-num" data-line="crayon-5ca312983f842853479394-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f842853479394-8">8</div><div class="crayon-num" data-line="crayon-5ca312983f842853479394-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f842853479394-10">10</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ca312983f842853479394-1"><span class="crayon-c">/*</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f842853479394-2"><span class="crayon-c">* The next routines deal with comparing 32 bit unsigned ints</span></div><div class="crayon-line" id="crayon-5ca312983f842853479394-3"><span class="crayon-c">* and worry about wraparound (automatic with unsigned arithmetic).</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f842853479394-4"><span class="crayon-c">*/</span></div><div class="crayon-line" id="crayon-5ca312983f842853479394-5"><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-e">inline </span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-e">before</span><span class="crayon-sy">(</span><span class="crayon-e">__u32 </span><span class="crayon-v">seq1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-e">__u32 </span><span class="crayon-v">seq2</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f842853479394-6"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5ca312983f842853479394-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">__s32</span><span class="crayon-sy">)</span><span class="crayon-sy">(</span><span class="crayon-v">seq1</span><span class="crayon-o">-</span><span class="crayon-v">seq2</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">&lt;</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f842853479394-8"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5ca312983f842853479394-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f842853479394-10"><span class="crayon-p">#define after(seq2, seq1) before(seq1, seq2)</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0011 seconds] -->
+<p>上述代码是内核中的解决回绕问题代码。__s32是有符号整型的意思，而__u32则是无符号整型。序列号发生回绕后，序列号变小，相减之后，把结果变成有符号数了，因此结果成了负数。</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-5ca312983f846695743135" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+假设seq1=255， seq2=1（发生了回绕）。
+seq1 = 1111 1111 seq2 = 0000 0001
+我们希望比较结果是
+ seq1 - seq2=
+ 1111 1111
+-0000 0001
+-----------
+ 1111 1110
+
+由于我们将结果转化成了有符号数，由于最高位是1，因此结果是一个负数，负数的绝对值为
+ 0000 0001 + 1 = 0000 0010 = 2
+
+因此seq1 - seq2 &lt; 0</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ca312983f846695743135-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f846695743135-2">2</div><div class="crayon-num" data-line="crayon-5ca312983f846695743135-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f846695743135-4">4</div><div class="crayon-num" data-line="crayon-5ca312983f846695743135-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f846695743135-6">6</div><div class="crayon-num" data-line="crayon-5ca312983f846695743135-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f846695743135-8">8</div><div class="crayon-num" data-line="crayon-5ca312983f846695743135-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f846695743135-10">10</div><div class="crayon-num" data-line="crayon-5ca312983f846695743135-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f846695743135-12">12</div><div class="crayon-num" data-line="crayon-5ca312983f846695743135-13">13</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ca312983f846695743135-1">假设<span class="crayon-v">seq1</span><span class="crayon-o">=</span><span class="crayon-cn">255</span>，<span class="crayon-h"> </span><span class="crayon-v">seq2</span><span class="crayon-o">=</span><span class="crayon-cn">1</span>（发生了回绕）。</div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f846695743135-2"><span class="crayon-v">seq1</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-cn">1111</span><span class="crayon-h"> </span><span class="crayon-cn">1111</span><span class="crayon-h"> </span><span class="crayon-v">seq2</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-cn">0000</span><span class="crayon-h"> </span><span class="crayon-cn">0001</span></div><div class="crayon-line" id="crayon-5ca312983f846695743135-3">我们希望比较结果是</div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f846695743135-4"><span class="crayon-h"> </span><span class="crayon-v">seq1</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-h"> </span><span class="crayon-v">seq2</span><span class="crayon-o">=</span></div><div class="crayon-line" id="crayon-5ca312983f846695743135-5"><span class="crayon-h"> </span><span class="crayon-cn">1111</span><span class="crayon-h"> </span><span class="crayon-cn">1111</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f846695743135-6"><span class="crayon-o">-</span><span class="crayon-cn">0000</span><span class="crayon-h"> </span><span class="crayon-cn">0001</span></div><div class="crayon-line" id="crayon-5ca312983f846695743135-7"><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">-</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f846695743135-8"><span class="crayon-h"> </span><span class="crayon-cn">1111</span><span class="crayon-h"> </span><span class="crayon-cn">1110</span></div><div class="crayon-line" id="crayon-5ca312983f846695743135-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f846695743135-10">由于我们将结果转化成了有符号数，由于最高位是<span class="crayon-cn">1</span>，因此结果是一个负数，负数的绝对值为</div><div class="crayon-line" id="crayon-5ca312983f846695743135-11"><span class="crayon-h"> </span><span class="crayon-cn">0000</span><span class="crayon-h"> </span><span class="crayon-cn">0001</span><span class="crayon-h"> </span><span class="crayon-o">+</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-cn">0000</span><span class="crayon-h"> </span><span class="crayon-cn">0010</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-cn">2</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f846695743135-12">&nbsp;</div><div class="crayon-line" id="crayon-5ca312983f846695743135-13">因此<span class="crayon-v">seq1</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-h"> </span><span class="crayon-v">seq2</span><span class="crayon-h"> </span><span class="crayon-o">&lt;</span><span class="crayon-h"> </span><span class="crayon-cn">0</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0021 seconds] -->
+<p></p>
+<h2 id="syn-flood攻击">syn flood攻击</h2>
+<p>最基本的DoS攻击就是利用合理的服务请求来占用过多的服务资源，从而使合法用户无法得到服务的响应。syn flood属于Dos攻击的一种。</p>
+<p>如果恶意的向某个服务器端口发送大量的SYN包，则可以使服务器打开大量的半开连接，分配TCB（Transmission Control Block）, 从而消耗大量的服务器资源，同时也使得正常的连接请求无法被相应。当开放了一个TCP端口后，该端口就处于Listening状态，不停地监视发到该端口的Syn报文，一 旦接收到Client发来的Syn报文，就需要为该请求分配一个TCB，通常一个TCB至少需要280个字节，在某些操作系统中TCB甚至需要1300个字节，并返回一个SYN ACK命令，立即转为SYN-RECEIVED即半开连接状态。系统会为此耗尽资源。</p>
+<p>常见的防攻击方法有：</p>
+<h3 id="无效连接的监视释放">无效连接的监视释放</h3>
+<p>监视系统的半开连接和不活动连接，当达到一定阈值时拆除这些连接，从而释放系统资源。这种方法对于所有的连接一视同仁，而且由于SYN Flood造成的半开连接数量很大，正常连接请求也被淹没在其中被这种方式误释放掉，因此这种方法属于入门级的SYN Flood方法。</p>
+<h3 id="延缓tcb分配方法">延缓TCB分配方法</h3>
+<p>消耗服务器资源主要是因为当SYN数据报文一到达，系统立即分配TCB，从而占用了资源。而SYN Flood由于很难建立起正常连接，因此，当正常连接建立起来后再分配TCB则可以有效地减轻服务器资源的消耗。常见的方法是使用Syn Cache和Syn Cookie技术。</p>
+<h4 id="syn-cache技术">Syn Cache技术</h4>
+<p>系统在收到一个SYN报文时，在一个专用HASH表中保存这种半连接信息，直到收到正确的回应ACK报文再分配TCB。这个开销远小于TCB的开销。当然还需要保存序列号。</p>
+<h4 id="syn-cookie技术">Syn Cookie技术</h4>
+<p>Syn Cookie技术则完全不使用任何存储资源，这种方法比较巧妙，它使用一种特殊的算法生成Sequence Number，这种算法考虑到了对方的IP、端口、己方IP、端口的固定信息，以及对方无法知道而己方比较固定的一些信息，如MSS(Maximum Segment Size，最大报文段大小，指的是TCP报文的最大数据报长度，其中不包括TCP首部长度。)、时间等，在收到对方 的ACK报文后，重新计算一遍，看其是否与对方回应报文中的（Sequence Number-1）相同，从而决定是否分配TCB资源。</p>
+<h3 id="使用syn-proxy防火墙">使用SYN Proxy防火墙</h3>
+<p>一种方式是防止墙dqywb连接的有效性后，防火墙才会向内部服务器发起SYN请求。防火墙代服务器发出的SYN ACK包使用的序列号为c, 而真正的服务器回应的序列号为c&#8217;, 这样，在每个数据报文经过防火墙的时候进行序列号的修改。另一种方式是防火墙确定了连接的安全后，会发出一个safe reset命令，client会进行重新连接，这时出现的syn报文会直接放行。这样不需要修改序列号了。但是，client需要发起两次握手过程，因此建立连接的时间将会延长。</p>
+<h2 id="连接队列">连接队列</h2>
+<p>在外部请求到达时，被服务程序最终感知到前，连接可能处于SYN_RCVD状态或是ESTABLISHED状态，但还未被应用程序接受。</p>
+<p><img src="//upload-images.jianshu.io/upload_images/12234098-36b3c46688c685c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="tcp queue" /></p>
+<p>对应地，服务器端也会维护两种队列，处于SYN_RCVD状态的半连接队列，而处于ESTABLISHED状态但仍未被应用程序accept的为全连接队列。如果这两个队列满了之后，就会出现各种丢包的情形。</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-5ca312983f84c678715373" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+查看是否有连接溢出
+netstat -s | grep LISTEN</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ca312983f84c678715373-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f84c678715373-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ca312983f84c678715373-1">查看是否有连接溢出</div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f84c678715373-2"><span class="crayon-v">netstat</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">s</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-e">grep </span><span class="crayon-v">LISTEN</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0006 seconds] -->
+<p></p>
+<h3 id="半连接队列满了">半连接队列满了</h3>
+<p>在三次握手协议中，服务器维护一个半连接队列，该队列为每个客户端的SYN包开设一个条目(服务端在接收到SYN包的时候，就已经创建了request_sock结构，存储在半连接队列中)，该条目表明服务器已收到SYN包，并向客户发出确认，正在等待客户的确认包。这些条目所标识的连接在服务器处于Syn_RECV状态，当服务器收到客户的确认包时，删除该条目，服务器进入ESTABLISHED状态。</p>
+<blockquote><p>目前，Linux下默认会进行5次重发SYN-ACK包，重试的间隔时间从1s开始，下次的重试间隔时间是前一次的双倍，5次的重试时间间隔为1s, 2s, 4s, 8s, 16s, 总共31s, 称为<code>指数退避</code>，第5次发出后还要等32s才知道第5次也超时了，所以，总共需要 1s + 2s + 4s+ 8s+ 16s + 32s = 63s, TCP才会把断开这个连接。由于，SYN超时需要63秒，那么就给攻击者一个攻击服务器的机会，攻击者在短时间内发送大量的SYN包给Server(俗称SYN flood攻击)，用于耗尽Server的SYN队列。对于应对SYN 过多的问题，linux提供了几个TCP参数：tcp_syncookies、tcp_synack_retries、tcp_max_syn_backlog、tcp_abort_on_overflow 来调整应对。</p></blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tcp_syncookies</td>
+<td>SYNcookie将连接信息编码在ISN(initialsequencenumber)中返回给客户端，这时server不需要将半连接保存在队列中，而是利用客户端随后发来的ACK带回的ISN还原连接信息，以完成连接的建立，避免了半连接队列被攻击SYN包填满。</td>
+</tr>
+<tr>
+<td>tcp_syncookies</td>
+<td>内核放弃建立连接之前发送SYN包的数量。</td>
+</tr>
+<tr>
+<td>tcp_synack_retries</td>
+<td>内核放弃连接之前发送SYN+ACK包的数量</td>
+</tr>
+<tr>
+<td>tcp_max_syn_backlog</td>
+<td>默认为1000. 这表示半连接队列的长度，如果超过则放弃当前连接。</td>
+</tr>
+<tr>
+<td>tcp_abort_on_overflow</td>
+<td>如果设置了此项，则直接reset. 否则，不做任何操作，这样当服务器半连接队列有空了之后，会重新接受连接。<code>Linux坚持在能力许可范围内不忽略进入的连接</code>。客户端在这期间会重复发送sys包，当重试次数到达上限之后，会得到<code>connection time out</code>响应。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="全连接队列满了">全连接队列满了</h3>
+<p>当第三次握手时，当server接收到ACK包之后，会进入一个新的叫 accept 的队列。</p>
+<p>当accept队列满了之后，即使client继续向server发送ACK的包，也会不被响应，此时ListenOverflows+1，同时server通过tcp_abort_on_overflow来决定如何返回，0表示直接丢弃该ACK，1表示发送RST通知client；相应的，client则会分别返回<code>read timeout</code> 或者 <code>connection reset by peer</code>。另外，tcp_abort_on_overflow是0的话，server过一段时间再次发送syn+ack给client（也就是重新走握手的第二步），如果client超时等待比较短，就很容易异常了。而客户端收到多个 SYN ACK 包，则会认为之前的 ACK 丢包了。于是促使客户端再次发送 ACK ，在 accept队列有空闲的时候最终完成连接。若 accept队列始终满员，则最终客户端收到 RST 包（此时服务端发送syn+ack的次数超出了tcp_synack_retries）。</p>
+<p>服务端仅仅只是创建一个定时器，以固定间隔重传syn和ack到服务端</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tcp_abort_on_overflow</td>
+<td>如果设置了此项，则直接reset. 否则，不做任何操作，这样当服务器半连接队列有空了之后，会重新接受连接。<code>Linux坚持在能力许可范围内不忽略进入的连接</code>。客户端在这期间会重复发送sys包，当重试次数到达上限之后，会得到<code>connection time out</code>响应。</td>
+</tr>
+<tr>
+<td>min(backlog, somaxconn)</td>
+<td>全连接队列的长度。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="命令">命令</h3>
+<p>netstat -s命令</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-5ca312983f852926069543" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+[root&lt;a href="http://www.jobbole.com/members/server"&gt;@server&lt;/a&gt; ~]#  netstat -s | egrep "listen|LISTEN" 
+667399 times the listen queue of a socket overflowed
+667399 SYNs to LISTEN sockets ignored</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ca312983f852926069543-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f852926069543-2">2</div><div class="crayon-num" data-line="crayon-5ca312983f852926069543-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ca312983f852926069543-1"><span class="crayon-sy">[</span><span class="crayon-v">root</span><span class="crayon-o">&lt;</span><span class="crayon-i">a</span><span class="crayon-h"> </span><span class="crayon-v">href</span><span class="crayon-o">=</span><span class="crayon-s">"http://www.jobbole.com/members/server"</span><span class="crayon-o">&gt;</span><span class="crayon-sy">@</span><span class="crayon-v">server</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">a</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-o">~</span><span class="crayon-sy">]</span><span class="crayon-p">#&nbsp;&nbsp;netstat -s | egrep "listen|LISTEN" </span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f852926069543-2"><span class="crayon-cn">667399</span><span class="crayon-h"> </span><span class="crayon-e">times </span><span class="crayon-e">the </span><span class="crayon-e">listen </span><span class="crayon-e">queue </span><span class="crayon-i">of</span><span class="crayon-h"> </span><span class="crayon-i">a</span><span class="crayon-h"> </span><span class="crayon-e">socket </span><span class="crayon-i">overflowed</span></div><div class="crayon-line" id="crayon-5ca312983f852926069543-3"><span class="crayon-cn">667399</span><span class="crayon-h"> </span><span class="crayon-e">SYNs </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">LISTEN </span><span class="crayon-e">sockets </span><span class="crayon-v">ignored</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0011 seconds] -->
+<p>上面看到的 667399 times ，表示全连接队列溢出的次数，隔几秒钟执行下，如果这个数字一直在增加的话肯定全连接队列偶尔满了。</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-5ca312983f856336848179" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+[root&lt;a href="http://www.jobbole.com/members/server"&gt;@server&lt;/a&gt; ~]#  netstat -s | grep TCPBacklogDrop</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ca312983f856336848179-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ca312983f856336848179-1"><span class="crayon-sy">[</span><span class="crayon-v">root</span><span class="crayon-o">&lt;</span><span class="crayon-i">a</span><span class="crayon-h"> </span><span class="crayon-v">href</span><span class="crayon-o">=</span><span class="crayon-s">"http://www.jobbole.com/members/server"</span><span class="crayon-o">&gt;</span><span class="crayon-sy">@</span><span class="crayon-v">server</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">a</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-o">~</span><span class="crayon-sy">]</span><span class="crayon-p">#&nbsp;&nbsp;netstat -s | grep TCPBacklogDrop</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0007 seconds] -->
+<p>查看 Accept queue 是否有溢出</p>
+<p>ss命令</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-5ca312983f85a344930589" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+[root&lt;a href="http://www.jobbole.com/members/server"&gt;@server&lt;/a&gt; ~]#  ss -lnt
+State Recv-Q Send-Q Local Address:Port Peer Address:Port
+LISTEN     0      128 *:6379 *:*
+LISTEN     0      128 *:22 *:*</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ca312983f85a344930589-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f85a344930589-2">2</div><div class="crayon-num" data-line="crayon-5ca312983f85a344930589-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f85a344930589-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ca312983f85a344930589-1"><span class="crayon-sy">[</span><span class="crayon-v">root</span><span class="crayon-o">&lt;</span><span class="crayon-i">a</span><span class="crayon-h"> </span><span class="crayon-v">href</span><span class="crayon-o">=</span><span class="crayon-s">"http://www.jobbole.com/members/server"</span><span class="crayon-o">&gt;</span><span class="crayon-sy">@</span><span class="crayon-v">server</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">a</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-o">~</span><span class="crayon-sy">]</span><span class="crayon-p">#&nbsp;&nbsp;ss -lnt</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f85a344930589-2"><span class="crayon-e">State </span><span class="crayon-v">Recv</span><span class="crayon-o">-</span><span class="crayon-i">Q</span><span class="crayon-h"> </span><span class="crayon-v">Send</span><span class="crayon-o">-</span><span class="crayon-i">Q</span><span class="crayon-h"> </span><span class="crayon-e">Local </span><span class="crayon-v">Address</span><span class="crayon-o">:</span><span class="crayon-e">Port </span><span class="crayon-e">Peer </span><span class="crayon-v">Address</span><span class="crayon-o">:</span><span class="crayon-e">Port</span></div><div class="crayon-line" id="crayon-5ca312983f85a344930589-3"><span class="crayon-i">LISTEN</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">128</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-o">:</span><span class="crayon-cn">6379</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-o">:</span><span class="crayon-o">*</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f85a344930589-4"><span class="crayon-i">LISTEN</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">128</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-o">:</span><span class="crayon-cn">22</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-o">:</span><span class="crayon-o">*</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0015 seconds] -->
+<p>如果State是listen状态，Send-Q 表示第三列的listen端口上的全连接队列最大为50，第一列Recv-Q为全连接队列当前使用了多少。<br />
+非 LISTEN 状态中 Recv-Q 表示 receive queue 中的 bytes 数量；Send-Q 表示 send queue 中的 bytes 数值。</p>
+<h3 id="小结">小结</h3>
+<p>当外部连接请求到来时，TCP模块会首先查看max_syn_backlog，如果处于SYN_RCVD状态的连接数目超过这一阈值，进入的连接会被拒绝。根据tcp_abort_on_overflow字段来决定是直接丢弃，还是直接reset.</p>
+<p>从服务端来说，三次握手中，第一步server接受到client的syn后，把相关信息放到半连接队列中，同时回复syn+ack给client. 第三步当收到客户端的ack, 将连接加入到全连接队列。</p>
+<p>一般，全连接队列比较小，会先满，此时半连接队列还没满。如果这时收到syn报文，则会进入半连接队列，没有问题。但是如果收到了三次握手中的第3步(ACK)，则会根据tcp_abort_on_overflow字段来决定是直接丢弃，还是直接reset.此时，客户端发送了ACK, 那么客户端认为三次握手完成，它认为服务端已经准备好了接收数据的准备。但此时服务端可能因为全连接队列满了而无法将连接放入，会重新发送第2步的syn+ack, 如果这时有数据到来，服务器TCP模块会将数据存入队列中。一段时间后，client端没收到回复，超时，连接异常，client会主动关闭连接。</p>
+<h1 id="三次握手四次挥手redis实例分析">“三次握手，四次挥手”redis实例分析</h1>
+<ol>
+<li>我在dev机器上部署redis服务，端口号为6379,</li>
+<li>通过tcpdump工具获取数据包，使用如下命令</li>
+</ol>
+<p></p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-5ca312983f85e530275285" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+tcpdump -w /tmp/a.cap port 6379 -s0
+-w把数据写入文件，-s0设置每个数据包的大小默认为68字节，如果用-S 0则会抓到完整数据包</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ca312983f85e530275285-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f85e530275285-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ca312983f85e530275285-1"><span class="crayon-v">tcpdump</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">w</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">tmp</span><span class="crayon-o">/</span><span class="crayon-v">a</span><span class="crayon-sy">.</span><span class="crayon-e">cap </span><span class="crayon-i">port</span><span class="crayon-h"> </span><span class="crayon-cn">6379</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">s0</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f85e530275285-2"><span class="crayon-o">-</span><span class="crayon-i">w</span>把数据写入文件，<span class="crayon-o">-</span><span class="crayon-i">s0</span>设置每个数据包的大小默认为<span class="crayon-cn">68</span>字节，如果用<span class="crayon-o">-</span><span class="crayon-i">S</span><span class="crayon-h"> </span><span class="crayon-cn">0</span>则会抓到完整数据包</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0047 seconds] -->
+<p></p>
+<ol>
+<li>在dev2机器上用redis-cli访问dev:6379, 发送一个ping, 得到回复pong</li>
+<li>停止抓包，用tcpdump读取捕获到的数据包</li>
+</ol>
+<p></p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-5ca312983f862264671727" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+tcpdump -r /tmp/a.cap -n -nn -A -x| vim -
+（-x 以16进制形式展示，便于后面分析）</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ca312983f862264671727-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f862264671727-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ca312983f862264671727-1"><span class="crayon-v">tcpdump</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">r</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">tmp</span><span class="crayon-o">/</span><span class="crayon-v">a</span><span class="crayon-sy">.</span><span class="crayon-v">cap</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">n</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">nn</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">A</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">x</span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-v">vim</span><span class="crayon-h"> </span><span class="crayon-o">-</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f862264671727-2">（<span class="crayon-o">-</span><span class="crayon-i">x</span><span class="crayon-h"> </span>以<span class="crayon-cn">16</span>进制形式展示，便于后面分析）</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0010 seconds] -->
+<p>共收到了7个包。</p>
+<p>抓到的是IP数据包，IP数据包分为IP头部和IP数据部分，IP数据部分是TCP头部加TCP数据部分。</p>
+<p>IP的数据格式为：<br />
+<img src="//upload-images.jianshu.io/upload_images/12234098-e6b04f3e9bebdac4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ip head" /><br />
+它由固定长度20B+可变长度构成。</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-5ca312983f865444778828" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+10:55:45.662077 IP dev2.39070 &gt; dev.6379: Flags [S], seq 4133153791, win 29200, options [mss 1460,sackOK,TS val 2959270704 ecr 0,nop,wscale 7], length 0
+        0x0000:  4500 003c 08cf 4000 3606 14a5 0ab3 b561
+        0x0010:  0a60 5cd4 989e 18eb f65a ebff 0000 0000
+        0x0020:  a002 7210 872f 0000 0204 05b4 0402 080a
+        0x0030:  b062 e330 0000 0000 0103 0307</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ca312983f865444778828-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f865444778828-2">2</div><div class="crayon-num" data-line="crayon-5ca312983f865444778828-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f865444778828-4">4</div><div class="crayon-num" data-line="crayon-5ca312983f865444778828-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ca312983f865444778828-1"><span class="crayon-cn">10</span><span class="crayon-o">:</span><span class="crayon-cn">55</span><span class="crayon-o">:</span><span class="crayon-cn">45.662077</span><span class="crayon-h"> </span><span class="crayon-e">IP </span><span class="crayon-v">dev2</span><span class="crayon-sy">.</span><span class="crayon-cn">39070</span><span class="crayon-h"> </span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">dev</span><span class="crayon-sy">.</span><span class="crayon-cn">6379</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-i">Flags</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-v">S</span><span class="crayon-sy">]</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">seq</span><span class="crayon-h"> </span><span class="crayon-cn">4133153791</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">win</span><span class="crayon-h"> </span><span class="crayon-cn">29200</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">options</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-i">mss</span><span class="crayon-h"> </span><span class="crayon-cn">1460</span><span class="crayon-sy">,</span><span class="crayon-v">sackOK</span><span class="crayon-sy">,</span><span class="crayon-e">TS </span><span class="crayon-i">val</span><span class="crayon-h"> </span><span class="crayon-cn">2959270704</span><span class="crayon-h"> </span><span class="crayon-i">ecr</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">,</span><span class="crayon-v">nop</span><span class="crayon-sy">,</span><span class="crayon-i">wscale</span><span class="crayon-h"> </span><span class="crayon-cn">7</span><span class="crayon-sy">]</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">length</span><span class="crayon-h"> </span><span class="crayon-cn">0</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f865444778828-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x0000</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">4500</span><span class="crayon-h"> </span><span class="crayon-cn">003c</span><span class="crayon-h"> </span><span class="crayon-cn">08cf</span><span class="crayon-h"> </span><span class="crayon-cn">4000</span><span class="crayon-h"> </span><span class="crayon-cn">3606</span><span class="crayon-h"> </span><span class="crayon-cn">14a5</span><span class="crayon-h"> </span><span class="crayon-cn">0ab3</span><span class="crayon-h"> </span><span class="crayon-i">b561</span></div><div class="crayon-line" id="crayon-5ca312983f865444778828-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x0010</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0a60</span><span class="crayon-h"> </span><span class="crayon-cn">5cd4</span><span class="crayon-h"> </span><span class="crayon-cn">989e</span><span class="crayon-h"> </span><span class="crayon-cn">18eb</span><span class="crayon-h"> </span><span class="crayon-e">f65a </span><span class="crayon-i">ebff</span><span class="crayon-h"> </span><span class="crayon-cn">0000</span><span class="crayon-h"> </span><span class="crayon-cn">0000</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f865444778828-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x0020</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-i">a002</span><span class="crayon-h"> </span><span class="crayon-cn">7210</span><span class="crayon-h"> </span><span class="crayon-cn">872f</span><span class="crayon-h"> </span><span class="crayon-cn">0000</span><span class="crayon-h"> </span><span class="crayon-cn">0204</span><span class="crayon-h"> </span><span class="crayon-cn">05b4</span><span class="crayon-h"> </span><span class="crayon-cn">0402</span><span class="crayon-h"> </span><span class="crayon-cn">080a</span></div><div class="crayon-line" id="crayon-5ca312983f865444778828-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x0030</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-e">b062 </span><span class="crayon-i">e330</span><span class="crayon-h"> </span><span class="crayon-cn">0000</span><span class="crayon-h"> </span><span class="crayon-cn">0000</span><span class="crayon-h"> </span><span class="crayon-cn">0103</span><span class="crayon-h"> </span><span class="crayon-cn">0307</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0192 seconds] -->
+<p>对着IP头部格式，来拆解数据包的具体含义。</p>
+<table>
+<thead>
+<tr>
+<th>字节值</th>
+<th>字节含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x4</td>
+<td>IP版本为ipv4</td>
+</tr>
+<tr>
+<td>0x5</td>
+<td>首部长度为5 * 4字节=20B</td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>服务类型，现在基本都置为0</td>
+</tr>
+<tr>
+<td>0x003c</td>
+<td>总长度为3*16+12=60字节，上面所有的长度就是60字节</td>
+</tr>
+<tr>
+<td>0x08cf</td>
+<td>标识。同一个数据报的唯一标识。当IP数据报被拆分时，会复制到每一个数据中。</td>
+</tr>
+<tr>
+<td>0x4000</td>
+<td><code>3bit 标志 + 13bit 片偏移</code>。3bit 标志对应 R、DF、MF。目前只有后两位有效，DF位：为1表示不分片，为0表示分片。MF：为1表示“更多的片”，为0表示这是最后一片。13bit 片位移：本分片在原先数据报文中相对首位的偏移位。（需要再乘以8 )</td>
+</tr>
+<tr>
+<td>0x36</td>
+<td>生存时间TTL。IP报文所允许通过的路由器的最大数量。每经过一个路由器，TTL减1，当为 0 时，路由器将该数据报丢弃。TTL 字段是由发送端初始设置一个 8 bit字段.推荐的初始值由分配数字 RFC 指定。发送 ICMP 回显应答时经常把 TTL 设为最大值 255。TTL可以防止数据报陷入路由循环。 此处为54.</td>
+</tr>
+<tr>
+<td>0x06</td>
+<td>协议类型。指出IP报文携带的数据使用的是哪种协议，以便目的主机的IP层能知道要将数据报上交到哪个进程。TCP 的协议号为6，UDP 的协议号为17。ICMP 的协议号为1，IGMP 的协议号为2。该 IP 报文携带的数据使用 TCP 协议，得到了验证。</td>
+</tr>
+<tr>
+<td>0x14a5</td>
+<td>16bitIP首部校验和。</td>
+</tr>
+<tr>
+<td>0x0ab3 b561</td>
+<td>32bit源ip地址。</td>
+</tr>
+<tr>
+<td>0x0a60 5cd4</td>
+<td>32bit目的ip地址。</td>
+</tr>
+</tbody>
+</table>
+<p>剩余的数据部分即为TCP协议相关的。TCP也是20B固定长度+可变长度部分。</p>
+<table>
+<thead>
+<tr>
+<th>字节值</th>
+<th>字节含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x989e</td>
+<td>16bit源端口。1<em>16</em>16<em>16+8</em>16<em>16+14</em>16+11=39070</td>
+</tr>
+<tr>
+<td>0x18eb</td>
+<td>16bit目的端口6379</td>
+</tr>
+<tr>
+<td>0xf65a ebff</td>
+<td>32bit序列号。4133153791</td>
+</tr>
+<tr>
+<td>0x0000 0000</td>
+<td>32bit确认号。</td>
+</tr>
+<tr>
+<td>0xa</td>
+<td>4bit首部长度，以4byte为单位。共10*4=40字节。因此TCP报文的可选长度为40-20=20</td>
+</tr>
+<tr>
+<td>0b000000</td>
+<td>6bit保留位。目前置为0.</td>
+</tr>
+<tr>
+<td>0b000010</td>
+<td>6bitTCP标志位。从左到右依次是紧急 URG、确认 ACK、推送 PSH、复位 RST、同步 SYN 、终止 FIN。</td>
+</tr>
+<tr>
+<td>0x7210</td>
+<td>滑动窗口大小，滑动窗口即tcp接收缓冲区的大小，用于tcp拥塞控制。29200</td>
+</tr>
+<tr>
+<td>0x872f</td>
+<td>16bit校验和。</td>
+</tr>
+<tr>
+<td>0x0000</td>
+<td>紧急指针。仅在 URG = 1时才有意义，它指出本报文段中的紧急数据的字节数。当 URG = 1 时，发送方 TCP 就把紧急数据插入到本报文段数据的最前面，而在紧急数据后面的数据仍是普通数据。</td>
+</tr>
+</tbody>
+</table>
+<p>可变长度部分，协议如下：</p>
+<table>
+<thead>
+<tr>
+<th>字节值</th>
+<th>字节含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0204 05b4</td>
+<td>最大报文长度为，05b4=1460. 即可接收的最大包长度，通常为MTU减40字节，IP头和TCP头各20字节</td>
+</tr>
+<tr>
+<td>0x0402</td>
+<td>表示支持SACK</td>
+</tr>
+<tr>
+<td>0x080a b062 e330 0000 0000</td>
+<td>时间戳。Ts val=b062 e330=2959270704, ecr=0</td>
+</tr>
+<tr>
+<td>0x01</td>
+<td>无操作</td>
+</tr>
+<tr>
+<td>0x03 0307</td>
+<td>窗口扩大因子为7. 移位7, 乘以128</td>
+</tr>
+</tbody>
+</table>
+<p>这样第一个包分析完了。dev2向dev发送SYN请求。<code>也就是三次握手中的第一次了。</code><br />
+<code>SYN seq(c)=4133153791</code></p>
+<p>第二个包，dev响应连接，ack=4133153792. 表明dev下次准备接收这个序号的包，用于tcp字节注的顺序控制。dev（也就是server端）的初始序号为seq=4264776963, syn=1.<br />
+<code>SYN ack=seq(c)+1 seq(s)=4264776963</code></p>
+<p>第三个包，client包确认，这里使用了相对值应答。seq=4133153792, 等于第二个包的ack. ack=4264776964.<br />
+<code>ack=seq(s)+1, seq=seq(c)+1</code><br />
+至此，三次握手完成。接下来就是发送ping和pong的数据了。</p>
+<p>接着第四个包。</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-5ca312983f86c982191024" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+10:55:48.090073 IP dev2.39070 &gt; dev.6379: Flags [P.], seq 1:15, ack 1, win 229, options [nop,nop,TS val 2959273132 ecr 3132256230], length 14
+        0x0000:  4500 0042 08d1 4000 3606 149d 0ab3 b561
+        0x0010:  0a60 5cd4 989e 18eb f65a ec00 fe33 5504
+        0x0020:  8018 00e5 4b5f 0000 0101 080a b062 ecac
+        0x0030:  bab2 6fe6 2a31 0d0a 2434 0d0a 7069 6e67
+        0x0040:  0d0a</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ca312983f86c982191024-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f86c982191024-2">2</div><div class="crayon-num" data-line="crayon-5ca312983f86c982191024-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f86c982191024-4">4</div><div class="crayon-num" data-line="crayon-5ca312983f86c982191024-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f86c982191024-6">6</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ca312983f86c982191024-1"><span class="crayon-cn">10</span><span class="crayon-o">:</span><span class="crayon-cn">55</span><span class="crayon-o">:</span><span class="crayon-cn">48.090073</span><span class="crayon-h"> </span><span class="crayon-e">IP </span><span class="crayon-v">dev2</span><span class="crayon-sy">.</span><span class="crayon-cn">39070</span><span class="crayon-h"> </span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">dev</span><span class="crayon-sy">.</span><span class="crayon-cn">6379</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-i">Flags</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-v">P</span><span class="crayon-sy">.</span><span class="crayon-sy">]</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">seq</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-o">:</span><span class="crayon-cn">15</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">ack</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">win</span><span class="crayon-h"> </span><span class="crayon-cn">229</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">options</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-v">nop</span><span class="crayon-sy">,</span><span class="crayon-v">nop</span><span class="crayon-sy">,</span><span class="crayon-e">TS </span><span class="crayon-i">val</span><span class="crayon-h"> </span><span class="crayon-cn">2959273132</span><span class="crayon-h"> </span><span class="crayon-i">ecr</span><span class="crayon-h"> </span><span class="crayon-cn">3132256230</span><span class="crayon-sy">]</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">length</span><span class="crayon-h"> </span><span class="crayon-cn">14</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f86c982191024-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x0000</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">4500</span><span class="crayon-h"> </span><span class="crayon-cn">0042</span><span class="crayon-h"> </span><span class="crayon-cn">08d1</span><span class="crayon-h"> </span><span class="crayon-cn">4000</span><span class="crayon-h"> </span><span class="crayon-cn">3606</span><span class="crayon-h"> </span><span class="crayon-cn">149d</span><span class="crayon-h"> </span><span class="crayon-cn">0ab3</span><span class="crayon-h"> </span><span class="crayon-i">b561</span></div><div class="crayon-line" id="crayon-5ca312983f86c982191024-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x0010</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0a60</span><span class="crayon-h"> </span><span class="crayon-cn">5cd4</span><span class="crayon-h"> </span><span class="crayon-cn">989e</span><span class="crayon-h"> </span><span class="crayon-cn">18eb</span><span class="crayon-h"> </span><span class="crayon-e">f65a </span><span class="crayon-e">ec00 </span><span class="crayon-i">fe33</span><span class="crayon-h"> </span><span class="crayon-cn">5504</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f86c982191024-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x0020</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">8018</span><span class="crayon-h"> </span><span class="crayon-cn">00e5</span><span class="crayon-h"> </span><span class="crayon-cn">4b5f</span><span class="crayon-h"> </span><span class="crayon-cn">0000</span><span class="crayon-h"> </span><span class="crayon-cn">0101</span><span class="crayon-h"> </span><span class="crayon-cn">080a</span><span class="crayon-h"> </span><span class="crayon-e">b062 </span><span class="crayon-i">ecac</span></div><div class="crayon-line" id="crayon-5ca312983f86c982191024-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x0030</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-i">bab2</span><span class="crayon-h"> </span><span class="crayon-cn">6fe6</span><span class="crayon-h"> </span><span class="crayon-cn">2a31</span><span class="crayon-h"> </span><span class="crayon-cn">0d0a</span><span class="crayon-h"> </span><span class="crayon-cn">2434</span><span class="crayon-h"> </span><span class="crayon-cn">0d0a</span><span class="crayon-h"> </span><span class="crayon-cn">7069</span><span class="crayon-h"> </span><span class="crayon-cn">6e67</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f86c982191024-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x0040</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0d0a</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0032 seconds] -->
+<p>tcp首部长度为32B, 可选长度为12B. IP报文的总长度为66B, 首部长度为20B, 因此TCP数据部分长度为14B. seq=0xf65a ec00=4133153792<br />
+ACK, PSH. 数据部分为2a31 0d0a 2434 0d0a 7069 6e67 0d0a</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-5ca312983f870790990991" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+0x2a31         -&gt; *1
+0x0d0a         -&gt; \r\n
+0x2434         -&gt; $4
+0x0d0a         -&gt; \r\n
+0x7069 0x6e67  -&gt; ping
+0x0d0a         -&gt; \r\n</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ca312983f870790990991-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f870790990991-2">2</div><div class="crayon-num" data-line="crayon-5ca312983f870790990991-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f870790990991-4">4</div><div class="crayon-num" data-line="crayon-5ca312983f870790990991-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5ca312983f870790990991-6">6</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ca312983f870790990991-1"><span class="crayon-cn">0x2a31</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-o">-&gt;</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-cn">1</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f870790990991-2"><span class="crayon-cn">0x0d0a</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-o">-&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">\</span><span class="crayon-v">r</span><span class="crayon-sy">\</span><span class="crayon-i">n</span></div><div class="crayon-line" id="crayon-5ca312983f870790990991-3"><span class="crayon-cn">0x2434</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-o">-&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-cn">4</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f870790990991-4"><span class="crayon-cn">0x0d0a</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-o">-&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">\</span><span class="crayon-v">r</span><span class="crayon-sy">\</span><span class="crayon-i">n</span></div><div class="crayon-line" id="crayon-5ca312983f870790990991-5"><span class="crayon-cn">0x7069</span><span class="crayon-h"> </span><span class="crayon-cn">0x6e67</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">-&gt;</span><span class="crayon-h"> </span><span class="crayon-i">ping</span></div><div class="crayon-line crayon-striped-line" id="crayon-5ca312983f870790990991-6"><span class="crayon-cn">0x0d0a</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-o">-&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">\</span><span class="crayon-v">r</span><span class="crayon-sy">\</span><span class="crayon-v">n</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0012 seconds] -->
+<p>dev2向dev发送了ping数据，第四个包完毕。</p>
+<p>第五个包，dev2向dev发送ack响应。<br />
+序列号为0xfe33 5504=4264776964, ack确认号为0xf65a ec0e=4133153806=(4133153792+14).</p>
+<p>第六个包，dev向dev2响应pong消息。序列号fe33 5504，确认号f65a ec0e, TCP头部可选长度为12B, IP数据报总长度为59B, 首部长度为20B, 因此TCP数据长度为7B.<br />
+数据部分2b50 4f4e 470d 0a, 翻译过来就是<code>+PONG\r\n</code>.</p>
+<p>至此，Redis客户端和Server端的三次握手过程分析完毕。</p>
+<h1 id="总结">总结</h1>
+<p>“三次握手，四次挥手”看似简单，但是深究进去，还是可以延伸出很多知识点的。比如半连接队列、全连接队列等等。以前关于TCP建立连接、关闭连接的过程很容易就会忘记，可能是因为只是死记硬背了几个过程，没有深入研究背后的原理。</p>
+<p>所以，“三次握手，四次挥手”你真的懂了吗？</p>
+<h1 id="参考资料">参考资料</h1>
+<p>【redis】https://segmentfault.com/a/1190000015044878<br />
+【tcp option】https://blog.csdn.net/wdscq1234/article/details/52423272<br />
+【滑动窗口】https://www.zhihu.com/question/32255109<br />
+【全连接队列】http://jm.taobao.org/2017/05/25/525-1/<br />
+【client fooling】 https://github.com/torvalds/linux/commit/5ea8ea2cb7f1d0db15762c9b0bb9e7330425a071<br />
+【backlog RECV_Q】http://blog.51cto.com/59090939/1947443<br />
+【定时器】https://www.cnblogs.com/menghuanbiao/p/5212131.html<br />
+【队列图示】https://www.itcodemonkey.com/article/5834.html<br />
+【tcp flood攻击】https://www.cnblogs.com/hubavyn/p/4477883.html<br />
+【MSS MTU】https://blog.csdn.net/LoseInVain/article/details/53694265</p>
+
+        
+        
+        
+    <div class="post-adds">
+        <span data-post-id="114633" class=" btn-bluet-bigger href-style vote-post-up   register-user-only "><i class="fa  fa-thumbs-o-up"></i> <h10 id="114633votetotal">1</h10> 赞</span>
+        <span data-book-type="1" data-site-id="2" data-item-id="114633" data-item-type="1" class=" btn-bluet-bigger href-style bookmark-btn  register-user-only "><i class="fa fa-bookmark-o  "></i> 9 收藏</span>
+
+                    <a href="#article-comment"><span class="btn-bluet-bigger href-style hide-on-480"><i class="fa fa-comments-o"></i> 2 评论</span></a>
+        
+        
+        
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style_24x24" style="display: inline-flex; position: relative; margin: 0; clear: both;float: right;">
+            <a class="jiathis_button_tsina"></a>
+            <a class="jiathis_button_weixin"></a>
+            <a class="jiathis_button_qzone"></a>
+            <a class="jiathis_button_fb hide-on-480"></a>
+            <a href="http://www.jiathis.com/share?uid=1745061" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+        </div>
+
+    </div>
+
+
+
+
+        <!-- BEGIN #author-bio -->
+
+
+<!-- END #author-bio -->
+	</div>
+	<!-- END .entry -->
+
+
+<!--script type="text/javascript" >
+var jiathis_config={
+	data_track_clickback:false,
+	title:"分享从伯乐在线看到的一篇好文章 ",
+	summary:"《“三次握手，四次挥手”你真的懂吗？》",
+	pic:"http://jbcdn2.b0.upaiyun.com/2016/04/149000d5c8b1bb08b8de6914ed749f28.gif",
+	appkey:{
+         "tsina": 1473879058    },
+	ralateuid:{
+		"tsina": 1670481425	},
+	hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1745061" charset="utf-8"></script -->
+<!-- JiaThis Button END -->
+			<div class="textwidget"><p><a href="http://group.jobbole.com/22945/" target='_blank'><img src='http://wx1.sinaimg.cn/mw690/bfdcef89gy1ffhg3psj2yj20h803cgm9.jpg' /></a></p>
+</div>
+		
+</div>
+<!-- END .post -->
+            <div style="text-align: left;">
+            <h3>相关文章</h3>
+            <ul style="font-size: 13px; list-style: disc inside;">
+                                    <li>
+                    <span class="digg-item-updated-title">
+                        <a title="用 Wireshark 图解 TCP 三次握手" target="_blank" href="http://blog.jobbole.com/108194/?utm_source=blog.jobbole.com&utm_medium=relatedPosts">用 Wireshark 图解 TCP 三次握手</a>
+                         &middot; <a href="http://blog.jobbole.com/108194/#comments" target="_blank"><i class="fa fa-comments-o"></i> 1</a>                    </span>
+                    </li>
+                                    <li>
+                    <span class="digg-item-updated-title">
+                        <a title="基于 Socket 的 UDP 和 TCP 编程介绍" target="_blank" href="http://blog.jobbole.com/107210/?utm_source=blog.jobbole.com&utm_medium=relatedPosts">基于 Socket 的 UDP 和 TCP 编程介绍</a>
+                         &middot; <a href="http://blog.jobbole.com/107210/#comments" target="_blank"><i class="fa fa-comments-o"></i> 1</a>                    </span>
+                    </li>
+                                    <li>
+                    <span class="digg-item-updated-title">
+                        <a title="一次完整的 HTTP 请求过程" target="_blank" href="http://blog.jobbole.com/106632/?utm_source=blog.jobbole.com&utm_medium=relatedPosts">一次完整的 HTTP 请求过程</a>
+                         &middot; <a href="http://blog.jobbole.com/106632/#comments" target="_blank"><i class="fa fa-comments-o"></i> 4</a>                    </span>
+                    </li>
+                                    <li>
+                    <span class="digg-item-updated-title">
+                        <a title="HTTPS 工作原理和 TCP 握手机制" target="_blank" href="http://blog.jobbole.com/105633/?utm_source=blog.jobbole.com&utm_medium=relatedPosts">HTTPS 工作原理和 TCP 握手机制</a>
+                         &middot; <a href="http://blog.jobbole.com/105633/#comments" target="_blank"><i class="fa fa-comments-o"></i> 2</a>                    </span>
+                    </li>
+                                    <li>
+                    <span class="digg-item-updated-title">
+                        <a title="TCP/IP之TCP协议：流量控制（滑动窗口协议）" target="_blank" href="http://blog.jobbole.com/105500/?utm_source=blog.jobbole.com&utm_medium=relatedPosts">TCP/IP之TCP协议：流量控制（滑动窗口协议）</a>
+                                            </span>
+                    </li>
+                            </ul>
+        </div>
+    
+    
+<div style="text-align: left;">
+    <h3>可能感兴趣的话题</h3>
+    <ul style="font-size: 13px; list-style: disc inside;">
+                        <li>
+                    <a href="http://group.jobbole.com/33695/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="学完Python很迷茫，工作也找不到，不知道能做些什么赚点收入" target="_blank">学完Python很迷茫，工作也找不到，不知道能做些什么赚点收入</a>
+                                    </li>
+                            <li>
+                    <a href="http://group.jobbole.com/33487/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="Windows和Linux简单共享文件夹" target="_blank">Windows和Linux简单共享文件夹</a>
+                                    </li>
+                            <li>
+                    <a href="http://group.jobbole.com/33481/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="谁可以给一份这样的神经网络代码" target="_blank">谁可以给一份这样的神经网络代码</a>
+                                    </li>
+                            <li>
+                    <a href="http://group.jobbole.com/33466/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="在Android自助安装Linux" target="_blank">在Android自助安装Linux</a>
+                                    </li>
+                            <li>
+                    <a href="http://group.jobbole.com/33450/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="某些关于神经网络的不当观点和用法" target="_blank">某些关于神经网络的不当观点和用法</a>
+                                    </li>
+                            <li>
+                    <a href="http://group.jobbole.com/33377/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="写了一个Vim-Markdown预览插件，欢迎使用" target="_blank">写了一个Vim-Markdown预览插件，欢迎使用</a>
+                     &middot; <a href="http://group.jobbole.com/33377/#comments" target="_blank"><i class="fa fa-comments-o"></i> 2</a>                </li>
+                </ul>
+</div>
+	
+            <div id="article-comment" class="dot-box center-align">
+
+                        <a href="http://www.jobbole.com/login?redirect=http://blog.jobbole.com/114633/"><button type="button" class="btn btn-non-transparent">登录后评论</button></a>
+            
+            <a target="_blank" href="http://www.jobbole.com/register"><button type="button" class="btn btn-primary">新用户注册</button></a>
+
+            <br/><br/>
+            <span>直接登录</span>
+            <style type="text/css">.t_login_text{margin:0; padding:0;}.t_login_button{margin:0; padding: 5px 0;}.t_login_button a{margin:0; padding-right:3px; line-height:25px}.t_login_button img{display:inline; border:none;}</style><!-- 使用社交帐号登录 来自 WordPress连接微博 插件 --><span class="connectBox1 t_login_button"><a href="http://blog.jobbole.com/wp-content/plugins/wp-connect/login.php?go=weixin&redirect_url=http%3A%2F%2Fblog.jobbole.com%2F114633%2F" title="微信" rel="nofollow"><img src="http://blog.jobbole.com/wp-content/plugins/wp-connect/images/login/btn_weixin.png" /></a><a href="http://blog.jobbole.com/wp-content/plugins/wp-connect/login.php?go=qzone&redirect_url=http%3A%2F%2Fblog.jobbole.com%2F114633%2F" title="QQ" rel="nofollow"><img src="http://blog.jobbole.com/wp-content/plugins/wp-connect/images/login/btn_qzone.png" /></a><a href="http://blog.jobbole.com/wp-content/plugins/wp-connect/login.php?go=sina&redirect_url=http%3A%2F%2Fblog.jobbole.com%2F114633%2F" title="新浪微博" rel="nofollow"><img src="http://blog.jobbole.com/wp-content/plugins/wp-connect/images/login/btn_sina.png" /></a><a href="http://blog.jobbole.com/wp-content/plugins/wp-connect/login.php?go=douban&redirect_url=http%3A%2F%2Fblog.jobbole.com%2F114633%2F" title="豆瓣" rel="nofollow"><img src="http://blog.jobbole.com/wp-content/plugins/wp-connect/images/login/btn_douban.png" /></a><a href="http://blog.jobbole.com/wp-content/plugins/wp-connect/login.php?go=github&redirect_url=http%3A%2F%2Fblog.jobbole.com%2F114633%2F" title="GitHub" rel="nofollow"><img src="http://blog.jobbole.com/wp-content/plugins/wp-connect/images/login/btn_github.png" /></a></span>        </div>
+    
+
+    <div id="comment_list" class="comments">
+
+                    <h5 id="comments" class="sub-title"><i class="glyphicon"></i>最新评论</h5>
+            <ul class="cmnt-list">
+
+                        <li id="comment-162731"  class="comment cmnt odd">
+    
+    <div class="cmnt-box">
+        <div class="cmnt-header">
+                            <a href="http://www.jobbole.com/members/wx993851758" class="cmnt-img"><img width="37" height="37" src="http://jbcdn2.b0.upaiyun.com/2015/04/8fbdaaa5ea6d3b49c8c1c825aafeb5d9.png" alt=""></a>
+                <div class="cmnt-meta">
+                    <span><a href="http://www.jobbole.com/members/wx993851758">烫烫烫烫烫烫</a><label class="comment_author_data">&nbsp;</label></span>
+                    <span class="c-title">
+                        &nbsp;                    </span>
+
+                    <span class="c-date">
+                        <a href="http://blog.jobbole.com/114633/#comment-162731">02/16</a>
+                    </span>
+
+                    
+                    
+                </div>
+                    </div>
+        <div class="cmnt-body">
+            <p>
+                <p>不错的文章</p>
+            </p>
+                    </div>
+                    <div class="cmnt-footer">
+
+                
+                <p class="c-like">
+                    <a title="赞同" alt="赞同" class="162731voteflag  t-up  href-style vote-comment-up  register-user-only   " data-comment-id="162731"><i class="fa fa-thumbs-o-up"></i> <span id="162731voteuptotal"> 赞</span></a>
+
+                    
+                    <a rel='nofollow' class='comment-reply-link register-user-only' href='http://blog.jobbole.com/114633/?replytocom=162731#respond' data-onclick='return addComment.moveForm( "comment-162731", "162731", "respond", "114633" )' aria-label='回复给烫烫烫烫烫烫'>回复 <i class='fa fa-reply'></i></a>
+                </p>
+            </div>
+            </div>
+    </li>
+</li><!-- #comment-## -->
+        <li id="comment-162744"  class="comment cmnt even">
+    
+    <div class="cmnt-box">
+        <div class="cmnt-header">
+                            <a href="http://www.jobbole.com/members/q789313263" class="cmnt-img"><img width="37" height="37" src="http://jbcdn2.b0.upaiyun.com/2015/04/8fbdaaa5ea6d3b49c8c1c825aafeb5d9.png" alt=""></a>
+                <div class="cmnt-meta">
+                    <span><a href="http://www.jobbole.com/members/q789313263">甜掉牙了</a><label class="comment_author_data">&nbsp;</label></span>
+                    <span class="c-title">
+                        &nbsp;                    </span>
+
+                    <span class="c-date">
+                        <a href="http://blog.jobbole.com/114633/#comment-162744">02/26</a>
+                    </span>
+
+                    
+                    
+                </div>
+                    </div>
+        <div class="cmnt-body">
+            <p>
+                <p>受教</p>
+            </p>
+b58a
+
+                    </div>
+                    <div class="cmnt-footer">
+
+                
+                <p class="c-like">
+                    <a title="赞同" alt="赞同" class="162744voteflag  t-up  href-style vote-comment-up  register-user-only   " data-comment-id="162744"><i class="fa fa-thumbs-o-up"></i> <span id="162744voteuptotal"> 赞</span></a>
+
+                    
+                    <a rel='nofollow' class='comment-reply-link register-user-only' href='http://blog.jobbole.com/114633/?replytocom=162744#respond' data-onclick='return addComment.moveForm( "comment-162744", "162744", "respond", "114633" )' aria-label='回复给甜掉牙了'>回复 <i class='fa fa-reply'></i></a>
+                </p>
+            </div>
+            </div>
+    </li>
+</li><!-- #comment-## -->
+            </ul>
+        
+    </div>
+		
+
+	
+</div>
+<!-- END .grid-8 -->
+
+<!-- BEGIN #sidebar -->
+<div id="sidebar" class="grid-4">
+
+	    <div id="text-110" class="widget widget_text">			<div class="textwidget"><p><a href="http://group.jobbole.com/22945/" target='_blank'><img src='http://wx2.sinaimg.cn/mw690/bfdcef89gy1fq547b3qybj208c046q3c.jpg' /></a></p>
+</div>
+		</div><div class="tabs tabbed_widget"><ul class="nav clearfix"><li><a id="link-tab1" href="#tab1" title="本周热门文章">本周热门文章</a></li><li><a id="link-tab2" href="#tab2" title="本月热门文章">本月热门文章</a></li><li><a id="link-tab3" href="#tab3" title="热门标签">热门标签</a></li></ul><div id="tab1" class="tab"><div class="floated-thumb">
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">0</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/114676/" title="中国科技公司提携年轻员工，寻求激情和活力">中国科技公司提携年轻员工，寻求激情...</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                </div></div><div id="tab2" class="tab"><div class="floated-thumb">
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">0</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/114671/" title="优化 JS 条件语句的 5 个技巧">优化 JS 条件语句的 5 个技巧</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">1</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/114676/" title="中国科技公司提携年轻员工，寻求激情和活力">中国科技公司提携年轻员工，寻求激情...</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                </div></div><div id="tab3" class="tab"><p><a href='http://blog.jobbole.com/tag/net/' class='tag-link-1636 tag-link-position-1' title='272个话题' style='font-size: 16.420289855072px;'>.Net</a>
+<a href='http://blog.jobbole.com/tag/android/' class='tag-link-4884 tag-link-position-2' title='148个话题' style='font-size: 13.68115942029px;'>Android</a>
+<a href='http://blog.jobbole.com/tag/app/' class='tag-link-1941 tag-link-position-3' title='92个话题' style='font-size: 11.652173913043px;'>App</a>
+<a href='http://blog.jobbole.com/tag/bug/' class='tag-link-218 tag-link-position-4' title='82个话题' style='font-size: 11.144927536232px;'>Bug</a>
+<a href='http://blog.jobbole.com/tag/cpp/' class='tag-link-807 tag-link-position-5' title='236个话题' style='font-size: 15.710144927536px;'>C++</a>
+<a href='http://blog.jobbole.com/tag/c-sharp/' class='tag-link-2197 tag-link-position-6' title='102个话题' style='font-size: 12.057971014493px;'>C sharp</a>
+<a href='http://blog.jobbole.com/tag/css/' class='tag-link-711 tag-link-position-7' title='68个话题' style='font-size: 10.333333333333px;'>CSS</a>
+<a href='http://blog.jobbole.com/tag/c/' class='tag-link-757 tag-link-position-8' title='253个话题' style='font-size: 16.014492753623px;'>C语言</a>
+<a href='http://blog.jobbole.com/tag/facebook/' class='tag-link-164 tag-link-position-9' title='111个话题' style='font-size: 12.463768115942px;'>Facebook</a>
+<a href='http://blog.jobbole.com/tag/featuredpost/' class='tag-link-2241 tag-link-position-10' title='621个话题' style='font-size: 19.971014492754px;'>featuredpost</a>
+<a href='http://blog.jobbole.com/tag/git/' class='tag-link-885 tag-link-position-11' title='97个话题' style='font-size: 11.855072463768px;'>Git</a>
+<a href='http://blog.jobbole.com/tag/github/' class='tag-link-1253 tag-link-position-12' title='78个话题' style='font-size: 10.942028985507px;'>Github</a>
+<a href='http://blog.jobbole.com/tag/go/' class='tag-link-4888 tag-link-position-13' title='52个话题' style='font-size: 9.1159420289855px;'>Go</a>
+<a href='http://blog.jobbole.com/tag/google/' class='tag-link-198 tag-link-position-14' title='290个话题' style='font-size: 16.623188405797px;'>Google</a>
+<a href='http://blog.jobbole.com/tag/hadoop/' class='tag-link-862 tag-link-position-15' title='40个话题' style='font-size: 8px;'>Hadoop</a>
+<a href='http://blog.jobbole.com/tag/html5/' class='tag-link-182 tag-link-position-16' title='84个话题' style='font-size: 11.246376811594px;'>HTML5</a>
+<a href='http://blog.jobbole.com/tag/ios/' class='tag-link-4887 tag-link-position-17' title='230个话题' style='font-size: 15.608695652174px;'>iOS</a>
+<a href='http://blog.jobbole.com/tag/it/' class='tag-link-513 tag-link-position-18' title='42个话题' style='font-size: 8.2028985507246px;'>IT</a>
+<a href='http://blog.jobbole.com/tag/java/' class='tag-link-457 tag-link-position-19' title='226个话题' style='font-size: 15.608695652174px;'>java</a>
+<a href='http://blog.jobbole.com/tag/javascript/' class='tag-link-683 tag-link-position-20' title='278个话题' style='font-size: 16.521739130435px;'>Javascript</a>
+<a href='http://blog.jobbole.com/tag/jquery/' class='tag-link-459 tag-link-position-21' title='55个话题' style='font-size: 9.4202898550725px;'>jQuery</a>
+<a href='http://blog.jobbole.com/tag/linux/' class='tag-link-190 tag-link-position-22' title='723个话题' style='font-size: 20.68115942029px;'>Linux</a>
+<a href='http://blog.jobbole.com/tag/mysql/' class='tag-link-191 tag-link-position-23' title='181个话题' style='font-size: 14.594202898551px;'>MySQL</a>
+<a href='http://blog.jobbole.com/tag/nginx/' class='tag-link-1172 tag-link-position-24' title='57个话题' style='font-size: 9.5217391304348px;'>Nginx</a>
+<a href='http://blog.jobbole.com/tag/node-js/' class='tag-link-896 tag-link-position-25' title='48个话题' style='font-size: 8.8115942028986px;'>Node.js</a>
+<a href='http://blog.jobbole.com/tag/nosql/' class='tag-link-967 tag-link-position-26' title='50个话题' style='font-size: 9.0144927536232px;'>NoSQL</a>
+<a href='http://blog.jobbole.com/tag/php/' class='tag-link-168 tag-link-position-27' title='167个话题' style='font-size: 14.289855072464px;'>php</a>
+<a href='http://blog.jobbole.com/tag/python/' class='tag-link-4886 tag-link-position-28' title='177个话题' style='font-size: 14.492753623188px;'>Python</a>
+<a href='http://blog.jobbole.com/tag/redis/' class='tag-link-2221 tag-link-position-29' title='75个话题' style='font-size: 10.739130434783px;'>Redis</a>
+<a href='http://blog.jobbole.com/tag/shell/' class='tag-link-1714 tag-link-position-30' title='75个话题' style='font-size: 10.739130434783px;'>shell</a>
+<a href='http://blog.jobbole.com/tag/soho/' class='tag-link-153 tag-link-position-31' title='40个话题' style='font-size: 8px;'>soho</a>
+<a href='http://blog.jobbole.com/tag/sql/' class='tag-link-857 tag-link-position-32' title='65个话题' style='font-size: 10.130434782609px;'>SQL</a>
+<a href='http://blog.jobbole.com/tag/sql-server/' class='tag-link-2681 tag-link-position-33' title='117个话题' style='font-size: 12.666666666667px;'>SQL Server</a>
+<a href='http://blog.jobbole.com/tag/ui/' class='tag-link-1143 tag-link-position-34' title='55个话题' style='font-size: 9.4202898550725px;'>UI</a>
+<a href='http://blog.jobbole.com/tag/ui%e8%ae%be%e8%ae%a1/' class='tag-link-2548 tag-link-position-35' title='142个话题' style='font-size: 13.579710144928px;'>UI设计</a>
+<a href='http://blog.jobbole.com/tag/vim/' class='tag-link-1640 tag-link-position-36' title='49个话题' style='font-size: 8.9130434782609px;'>Vim</a>
+<a href='http://blog.jobbole.com/tag/web/' class='tag-link-404 tag-link-position-37' title='51个话题' style='font-size: 9.1159420289855px;'>Web</a>
+<a href='http://blog.jobbole.com/tag/web%e5%bc%80%e5%8f%91/' class='tag-link-493 tag-link-position-38' title='119个话题' style='font-size: 12.768115942029px;'>Web开发</a>
+<a href='http://blog.jobbole.com/tag/book/' class='tag-link-1022 tag-link-position-39' title='61个话题' style='font-size: 9.8260869565217px;'>书籍</a>
+<a href='http://blog.jobbole.com/tag/%e4%ba%92%e8%81%94%e7%bd%91/' class='tag-link-40 tag-link-position-40' title='86个话题' style='font-size: 11.347826086957px;'>互联网</a>
+<a href='http://blog.jobbole.com/tag/%e4%ba%a4%e4%ba%92%e8%ae%be%e8%ae%a1/' class='tag-link-648 tag-link-position-41' title='121个话题' style='font-size: 12.869565217391px;'>交互设计</a>
+<a href='http://blog.jobbole.com/tag/%e4%ba%a7%e5%93%81/' class='tag-link-522 tag-link-position-42' title='93个话题' style='font-size: 11.652173913043px;'>产品</a>
+<a href='http://blog.jobbole.com/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86/' class='tag-link-549 tag-link-position-43' title='57个话题' style='font-size: 9.5217391304348px;'>产品经理</a>
+<a href='http://blog.jobbole.com/tag/%e4%bb%a3%e7%a0%81/' class='tag-link-489 tag-link-position-44' title='124个话题' style='font-size: 12.971014492754px;'>代码</a>
+<a href='http://blog.jobbole.com/tag/%e5%88%86%e5%b8%83%e5%bc%8f/' class='tag-link-1331 tag-link-position-45' title='51个话题' style='font-size: 9.1159420289855px;'>分布式</a>
+<a href='http://blog.jobbole.com/tag/startup/' class='tag-link-4878 tag-link-position-46' title='219个话题' style='font-size: 15.405797101449px;'>创业</a>
+<a href='http://blog.jobbole.com/tag/%e5%89%8d%e7%ab%af/' class='tag-link-1138 tag-link-position-47' title='70个话题' style='font-size: 10.434782608696px;'>前端</a>
+<a href='http://blog.jobbole.com/tag/%e5%9b%a2%e9%98%9f/' class='tag-link-551 tag-link-position-48' title='73个话题' style='font-size: 10.63768115942px;'>团队</a>
+<a href='http://blog.jobbole.com/tag/bigdata/' class='tag-link-884 tag-link-position-49' title='62个话题' style='font-size: 9.9275362318841px;'>大数据</a>
+<a href='http://blog.jobbole.com/tag/%e5%a5%b3%e7%a8%8b%e5%ba%8f%e5%91%98/' class='tag-link-1460 tag-link-position-50' title='56个话题' style='font-size: 9.5217391304348px;'>女程序员</a>
+<a href='http://blog.jobbole.com/tag/%e5%a8%81%e5%ae%a2/' class='tag-link-129 tag-link-position-51' title='40个话题' style='font-size: 8px;'>威客</a>
+<a href='http://blog.jobbole.com/tag/%e5%ad%a6%e4%b9%a0/' class='tag-link-442 tag-link-position-52' title='56个话题' style='font-size: 9.5217391304348px;'>学习</a>
+<a href='http://blog.jobbole.com/tag/%e5%ae%89%e5%85%a8/' class='tag-link-1214 tag-link-position-53' title='160个话题' style='font-size: 14.086956521739px;'>安全</a>
+<a href='http://blog.jobbole.com/tag/%e5%ae%89%e5%8d%93%e5%bc%80%e5%8f%91/' class='tag-link-3362 tag-link-position-54' title='60个话题' style='font-size: 9.8260869565217px;'>安卓开发</a>
+<a href='http://blog.jobbole.com/tag/%e5%ae%a2%e6%88%b7/' class='tag-link-174 tag-link-position-55' title='49个话题' style='font-size: 8.9130434782609px;'>客户</a>
+<a href='http://blog.jobbole.com/tag/%e5%b1%8c%e7%a8%8b/' class='tag-link-5126 tag-link-position-56' title='49个话题' style='font-size: 8.9130434782609px;'>屌程</a>
+<a href='http://blog.jobbole.com/tag/%e5%b7%a5%e5%85%b7/' class='tag-link-18 tag-link-position-57' title='136个话题' style='font-size: 13.376811594203px;'>工具</a>
+<a href='http://blog.jobbole.com/tag/%e5%b7%a5%e7%a8%8b%e5%b8%88/' class='tag-link-470 tag-link-position-58' title='40个话题' style='font-size: 8px;'>工程师</a>
+<a href='http://blog.jobbole.com/tag/%e5%bc%80%e5%8f%91%e4%ba%ba%e5%91%98/' class='tag-link-370 tag-link-position-59' title='120个话题' style='font-size: 12.768115942029px;'>开发人员</a>
+<a href='http://blog.jobbole.com/tag/%e5%bc%80%e6%ba%90/' class='tag-link-196 tag-link-position-60' title='122个话题' style='font-size: 12.869565217391px;'>开源</a>
+<a href='http://blog.jobbole.com/tag/%e5%be%ae%e8%bd%af/' class='tag-link-429 tag-link-position-61' title='96个话题' style='font-size: 11.855072463768px;'>微软</a>
+<a href='http://blog.jobbole.com/tag/%e6%8a%80%e6%9c%af%e9%9d%a2%e8%af%95/' class='tag-link-1876 tag-link-position-62' title='80个话题' style='font-size: 11.04347826087px;'>技术面试</a>
+<a href='http://blog.jobbole.com/tag/%e6%8b%9b%e8%81%98/' class='tag-link-326 tag-link-position-63' title='46个话题' style='font-size: 8.6086956521739px;'>招聘</a>
+<a href='http://blog.jobbole.com/tag/%e6%95%88%e7%8e%87/' class='tag-link-415 tag-link-position-64' title='56个话题' style='font-size: 9.5217391304348px;'>效率</a>
+<a href='http://blog.jobbole.com/tag/%e6%95%99%e7%a8%8b/' class='tag-link-600 tag-link-position-65' title='53个话题' style='font-size: 9.2173913043478px;'>教程</a>
+<a href='http://blog.jobbole.com/tag/%e6%95%b0%e5%ad%a6/' class='tag-link-495 tag-link-position-66' title='46个话题' style='font-size: 8.6086956521739px;'>数学</a>
+<a href='http://blog.jobbole.com/tag/database/' class='tag-link-353 tag-link-position-67' title='526个话题' style='font-size: 19.260869565217px;'>数据库</a>
+<a href='http://blog.jobbole.com/tag/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84/' class='tag-link-649 tag-link-position-68' title='45个话题' style='font-size: 8.5072463768116px;'>数据结构</a>
+<a href='http://blog.jobbole.com/tag/time-management/' class='tag-link-271 tag-link-position-69' title='47个话题' style='font-size: 8.7101449275362px;'>时间管理</a>
+<a href='http://blog.jobbole.com/tag/%e6%9c%8d%e5%8a%a1%e5%99%a8/' class='tag-link-311 tag-link-position-70' title='58个话题' style='font-size: 9.6231884057971px;'>服务器</a>
+<a href='http://blog.jobbole.com/tag/machinelearning/' class='tag-link-1910 tag-link-position-71' title='111个话题' style='font-size: 12.463768115942px;'>机器学习</a>
+<a href='http://blog.jobbole.com/tag/architecture/' class='tag-link-603 tag-link-position-72' title='136个话题' style='font-size: 13.376811594203px;'>架构</a>
+<a href='http://blog.jobbole.com/tag/%e6%b5%8b%e8%af%95/' class='tag-link-678 tag-link-position-73' title='104个话题' style='font-size: 12.159420289855px;'>测试</a>
+<a href='http://blog.jobbole.com/tag/%e6%b5%8f%e8%a7%88%e5%99%a8/' class='tag-link-63 tag-link-position-74' title='53个话题' style='font-size: 9.2173913043478px;'>浏览器</a>
+<a href='http://blog.jobbole.com/tag/%e6%b8%b8%e6%88%8f/' class='tag-link-797 tag-link-position-75' title='85个话题' style='font-size: 11.246376811594px;'>游戏</a>
+<a href='http://blog.jobbole.com/tag/%e7%94%a8%e6%88%b7/' class='tag-link-460 tag-link-position-76' title='59个话题' style='font-size: 9.7246376811594px;'>用户</a>
+<a href='http://blog.jobbole.com/tag/%e7%94%a8%e6%88%b7%e4%bd%93%e9%aa%8c/' class='tag-link-580 tag-link-position-77' title='197个话题' style='font-size: 15px;'>用户体验</a>
+<a href='http://blog.jobbole.com/tag/%e7%95%8c%e9%9d%a2/' class='tag-link-4190 tag-link-position-78' title='47个话题' style='font-size: 8.7101449275362px;'>界面</a>
+<a href='http://blog.jobbole.com/tag/%e7%a0%81%e5%86%9c%e6%95%85%e4%ba%8b/' class='tag-link-2863 tag-link-position-79' title='54个话题' style='font-size: 9.3188405797101px;'>码农故事</a>
+<a href='http://blog.jobbole.com/tag/%e7%a7%bb%e5%8a%a8%e5%ba%94%e7%94%a8/' class='tag-link-654 tag-link-position-80' title='71个话题' style='font-size: 10.536231884058px;'>移动应用</a>
+<a href='http://blog.jobbole.com/tag/%e7%a7%bb%e5%8a%a8%e7%ab%af/' class='tag-link-3904 tag-link-position-81' title='45个话题' style='font-size: 8.5072463768116px;'>移动端</a>
+<a href='http://blog.jobbole.com/tag/%e7%a8%8b%e5%ba%8f%e5%91%98/' class='tag-link-368 tag-link-position-82' title='968个话题' style='font-size: 22px;'>程序员</a>
+<a href='http://blog.jobbole.com/tag/algorithm/' class='tag-link-650 tag-link-position-83' title='296个话题' style='font-size: 16.724637681159px;'>算法</a>
+<a href='http://blog.jobbole.com/tag/management/' class='tag-link-4880 tag-link-position-84' title='47个话题' style='font-size: 8.7101449275362px;'>管理</a>
+<a href='http://blog.jobbole.com/tag/%e7%bc%96%e7%a8%8b/' class='tag-link-389 tag-link-position-85' title='156个话题' style='font-size: 13.985507246377px;'>编程</a>
+<a href='http://blog.jobbole.com/tag/%e7%bc%96%e7%a8%8b%e8%af%ad%e8%a8%80/' class='tag-link-596 tag-link-position-86' title='130个话题' style='font-size: 13.173913043478px;'>编程语言</a>
+<a href='http://blog.jobbole.com/tag/%e7%bd%91%e7%ab%99/' class='tag-link-150 tag-link-position-87' title='82个话题' style='font-size: 11.144927536232px;'>网站</a>
+<a href='http://blog.jobbole.com/tag/%e7%bd%91%e9%a1%b5%e8%ae%be%e8%ae%a1/' class='tag-link-454 tag-link-position-88' title='243个话题' style='font-size: 15.913043478261px;'>网页设计</a>
+<a href='http://blog.jobbole.com/tag/%e8%81%8c%e5%9c%ba/' class='tag-link-253 tag-link-position-89' title='448个话题' style='font-size: 18.550724637681px;'>职场</a>
+<a href='http://blog.jobbole.com/tag/%e8%87%aa%e7%94%b1%e8%81%8c%e4%b8%9a/' class='tag-link-315 tag-link-position-90' title='131个话题' style='font-size: 13.173913043478px;'>自由职业</a>
+<a href='http://blog.jobbole.com/tag/%e8%8b%b9%e6%9e%9c/' class='tag-link-183 tag-link-position-91' title='54个话题' style='font-size: 9.3188405797101px;'>苹果</a>
+<a href='http://blog.jobbole.com/tag/%e8%ae%be%e8%ae%a1/' class='tag-link-431 tag-link-position-92' title='130个话题' style='font-size: 13.173913043478px;'>设计</a>
+<a href='http://blog.jobbole.com/tag/%e8%ae%be%e8%ae%a1%e5%b8%88/' class='tag-link-436 tag-link-position-93' title='209个话题' style='font-size: 15.202898550725px;'>设计师</a>
+<a href='http://blog.jobbole.com/tag/%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f/' class='tag-link-1845 tag-link-position-94' title='73个话题' style='font-size: 10.63768115942px;'>设计模式</a>
+<a href='http://blog.jobbole.com/tag/%e8%b6%a3%e6%96%87/' class='tag-link-2105 tag-link-position-95' title='72个话题' style='font-size: 10.536231884058px;'>趣文</a>
+<a href='http://blog.jobbole.com/tag/%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91/' class='tag-link-38 tag-link-position-96' title='103个话题' style='font-size: 12.159420289855px;'>软件开发</a>
+<a href='http://blog.jobbole.com/tag/%e9%87%8d%e6%9e%84/' class='tag-link-728 tag-link-position-97' title='45个话题' style='font-size: 8.5072463768116px;'>重构</a>
+<a href='http://blog.jobbole.com/tag/%e9%9d%a2%e8%af%95/' class='tag-link-173 tag-link-position-98' title='127个话题' style='font-size: 13.072463768116px;'>面试</a>
+<a href='http://blog.jobbole.com/tag/%e9%a1%b9%e7%9b%ae%e7%bb%8f%e7%90%86/' class='tag-link-1049 tag-link-position-99' title='40个话题' style='font-size: 8px;'>项目经理</a>
+<a href='http://blog.jobbole.com/tag/%e9%bb%91%e5%ae%a2/' class='tag-link-617 tag-link-position-100' title='60个话题' style='font-size: 9.8260869565217px;'>黑客</a></p></div></div><div id="text-103" class="widget widget_text">			<div class="textwidget"><p><a href="http://blog.jobbole.com/106093/" target='_blank'><img src='http://ww2.sinaimg.cn/mw690/bfdcef89gw1f9cf776pjmj208c03c3yt.jpg' /></a></p>
+</div>
+		</div>
+        <h3 class="widget-title">
+            <a target="_blank" href="http://top.jobbole.com/category/news/">业界热点资讯</a>
+            <span style="float:right;"><a target="_blank" href="http://top.jobbole.com/category/news/">更多 &raquo;</a></span>
+        </h3>
+        <!-- BEGIN .container -->
+        <div class="container">
+            
+                <!-- BEGIN .grid-4 -->
+                <div class="grid-4 floated-thumb">
+
+                    
+                        <!-- BEGIN .post-thumb -->
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://top.jobbole.com/39313/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news"><img src="http://wx4.sinaimg.cn/mw690/7cc829d3gy1fqz3p82kbhj20xc0hi40j.jpg" alt="" width="50" height="50" /></a>
+                        </div>
+                        <!-- END .post-thumb -->
+
+                        <!-- BEGIN .post-meta -->
+                        <div class="post-meta">
+
+                            <p>
+                                <a class="meta-title" title="密码明文存入 log？Twitter 程序员可能要被祭天了" target="_blank" href="http://top.jobbole.com/39313/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news">密码明文存入 log？Twitter 程序员可能要被祭天了</a><br />
+                                2018/05/04                                &middot; <i class="fa fa-thumbs-o-up"></i> 100                                                                    &middot;  <a href="http://top.jobbole.com/39313/#comments" target="_blank"><i class="fa fa-comments-o"></i> 3</a>
+                                
+                            </p>
+
+                        </div>
+                        <!-- END .post-meta -->
+
+                        <div class="clear"></div>
+
+                    
+                        <!-- BEGIN .post-thumb -->
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://top.jobbole.com/38654/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news"><img src="http://jbcdn2.b0.upaiyun.com/2015/11/565719730ba5cef93633ac3fb10cd4e5.jpg" alt="" width="50" height="50" /></a>
+                        </div>
+                        <!-- END .post-thumb -->
+
+                        <!-- BEGIN .post-meta -->
+                        <div class="post-meta">
+
+                            <p>
+                                <a class="meta-title" title="地址 1.1.1.1，Cloudflare 推新公共 DNS 服务" target="_blank" href="http://top.jobbole.com/38654/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news">地址 1.1.1.1，Cloudflare 推新公共 DNS 服务</a><br />
+                                2018/04/02                                &middot; <i class="fa fa-thumbs-o-up"></i> 70                                                                    &middot;  <a href="http://top.jobbole.com/38654/#comments" target="_blank"><i class="fa fa-comments-o"></i> 6</a>
+                                
+                            </p>
+
+                        </div>
+                        <!-- END .post-meta -->
+
+                        <div class="clear"></div>
+
+                    
+                        <!-- BEGIN .post-thumb -->
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://top.jobbole.com/38659/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news"><img src="http://jbcdn2.b0.upaiyun.com/2018/04/c1c708b7ceac4b285d7fb409c4c1dec5.png" alt="" width="50" height="50" /></a>
+                        </div>
+                        <!-- END .post-thumb -->
+
+                        <!-- BEGIN .post-meta -->
+                        <div class="post-meta">
+
+                            <p>
+                                <a class="meta-title" title="C++委员会决定在C++20中弃用原始指针" target="_blank" href="http://top.jobbole.com/38659/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news">C++委员会决定在C++20中弃用原始指针</a><br />
+                                2018/04/02                                &middot; <i class="fa fa-thumbs-o-up"></i> 16                                
+                            </p>
+
+                        </div>
+                        <!-- END .post-meta -->
+
+                        <div class="clear"></div>
+
+                    
+                        <!-- BEGIN .post-thumb -->
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://top.jobbole.com/38647/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news"><img src="http://jbcdn2.b0.upaiyun.com/2015/11/565719730ba5cef93633ac3fb10cd4e5.jpg" alt="" width="50" height="50" /></a>
+                        </div>
+                        <!-- END .post-thumb -->
+
+                        <!-- BEGIN .post-meta -->
+                        <div class="post-meta">
+
+                            <p>
+                                <a class="meta-title" title="安卓用 Java 侵犯甲骨文版权，谷歌或赔 88 亿美元" target="_blank" href="http://top.jobbole.com/38647/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news">安卓用 Java 侵犯甲骨文版权，谷歌或赔 88 亿美元</a><br />
+                                2018/03/28                                &middot; <i class="fa fa-thumbs-o-up"></i> 85                                                                    &middot;  <a href="http://top.jobbole.com/38647/#comments" target="_blank"><i class="fa fa-comments-o"></i> 3</a>
+                                
+                            </p>
+
+                        </div>
+                        <!-- END .post-meta -->
+
+                        <div class="clear"></div>
+
+                    
+                        <!-- BEGIN .post-thumb -->
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://top.jobbole.com/38635/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news"><img src="http://jbcdn2.b0.upaiyun.com/2018/03/a69906b0e7345e52f9adbb5564378044.jpg" alt="" width="50" height="50" /></a>
+                        </div>
+                        <!-- END .post-thumb -->
+
+                        <!-- BEGIN .post-meta -->
+                        <div class="post-meta">
+
+                            <p>
+                                <a class="meta-title" title="李文星家属诉 BOSS直聘：哪怕赔一分 能给个交代也值" target="_blank" href="http://top.jobbole.com/38635/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news">李文星家属诉 BOSS直聘：哪怕赔一分 能给个交代也值</a><br />
+                                2018/03/27                                &middot; <i class="fa fa-thumbs-o-up"></i> 140                                                                    &middot;  <a href="http://top.jobbole.com/38635/#comments" target="_blank"><i class="fa fa-comments-o"></i> 4</a>
+                                
+                            </p>
+
+                        </div>
+                        <!-- END .post-meta -->
+
+                        <div class="clear"></div>
+
+                    
+                </div>
+                <!-- END .grid-4 -->
+
+            
+            <div class="clear"></div>
+
+        </div>
+        <!-- END .container -->
+        <div id="text-109" class="widget widget_text">			<div class="textwidget"><p><a href="http://blog.jobbole.com/84342/" target='_blank'><img src='http://ww2.sinaimg.cn/mw690/e5298966gw1evyjrd4iqcj208c03c0t0.jpg' /></a></p>
+</div>
+		</div>            <h3 class="widget-title">
+                <a href="http://hao.jobbole.com?utm_source=blog.jobbole.com&utm_medium=sidebar-resources-more" target="_blank">精选工具资源</a>
+                <span style="float:right;"><a target="_blank" href="http://hao.jobbole.com?utm_source=blog.jobbole.com&utm_medium=sidebar-resources-more">更多资源 &raquo;</a></span>
+            </h3>
+            <div class="container">
+                <div class="grid-4">
+                
+                    <div class="floated-thumb">
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://hao.jobbole.com/mlpack/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="mlpack: 一个C++机器学习库"><img src="http://jbcdn1.b0.upaiyun.com/2017/12/07f81f9da52136cf8b9de917b295cb5a.png" alt="" width="50" height="50" /></a>
+                        </div>
+                        <div class="post-meta">
+                            <p>
+                                <a class="meta-title" target="_blank" href="http://hao.jobbole.com/mlpack/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="mlpack: 一个C++机器学习库">mlpack: 一个C++机器学习库</a><br />
+                                <a href="http://hao.jobbole.com/category/cpp-lang/" rel="category tag">C++</a>, <a href="http://hao.jobbole.com/category/cpp-lang/cpp-machine-learning/" rel="category tag">机器学习</a>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                
+                    <div class="floated-thumb">
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://hao.jobbole.com/whitewidow/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="Whitewidow：SQL 漏洞自动扫描工具"><img src="http://jbcdn2.b0.upaiyun.com/2015/11/ba617727e903bb7120989f0699fde13a.jpg" alt="" width="50" height="50" /></a>
+                        </div>
+                        <div class="post-meta">
+                            <p>
+                                <a class="meta-title" target="_blank" href="http://hao.jobbole.com/whitewidow/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="Whitewidow：SQL 漏洞自动扫描工具">Whitewidow：SQL 漏洞自动扫描工具</a><br />
+                                <a href="http://hao.jobbole.com/category/dotnet/dotnet-db/" rel="category tag">数据库</a> &middot; <a target='_blank' href='http://hao.jobbole.com/whitewidow/#comments'><i class='fa fa-comments-o'></i> 4</a>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                
+                    <div class="floated-thumb">
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://hao.jobbole.com/caffe/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="Caffe：一个深度学习框架"><img src="http://jbcdn1.b0.upaiyun.com/2017/04/1fafd8ec015d2306d9a91b4f8b8f34e3.png" alt="" width="50" height="50" /></a>
+                        </div>
+                        <div class="post-meta">
+                            <p>
+                                <a class="meta-title" target="_blank" href="http://hao.jobbole.com/caffe/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="Caffe：一个深度学习框架">Caffe：一个深度学习框架</a><br />
+                                <a href="http://hao.jobbole.com/category/cpp-lang/cpp-machine-learning/" rel="category tag">机器学习</a> &middot; <a target='_blank' href='http://hao.jobbole.com/caffe/#comments'><i class='fa fa-comments-o'></i> 3</a>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                
+                    <div class="floated-thumb">
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://hao.jobbole.com/static_code_analysis_tool_list_opensource_enterprise/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="静态代码分析工具清单：公司篇"><img src="http://jbcdn1.b0.upaiyun.com/2017/02/1947b75fb4553a3ed8a80b5ff4f46428-300x252.png" alt="" width="50" height="50" /></a>
+                        </div>
+                        <div class="post-meta">
+                            <p>
+                                <a class="meta-title" target="_blank" href="http://hao.jobbole.com/static_code_analysis_tool_list_opensource_enterprise/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="静态代码分析工具清单：公司篇">静态代码分析工具清单：公司篇</a><br />
+                                <a href="http://hao.jobbole.com/category/cpp-lang/cpp-static-code-analysis/" rel="category tag">静态代码分析</a>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                
+                    <div class="floated-thumb">
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://hao.jobbole.com/hotswapagent%ef%bc%9a%e6%94%af%e6%8c%81%e6%97%a0%e9%99%90%e6%ac%a1%e9%87%8d%e5%ae%9a%e4%b9%89%e8%bf%90%e8%a1%8c%e6%97%b6%e7%b1%bb%e4%b8%8e%e8%b5%84%e6%ba%90-2/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="HotswapAgent：支持无限次重定义运行时类与资源"><img src="http://jbcdn1.b0.upaiyun.com/2016/11/026cbd303dbbd4ba812fe1903fe2214e.png" alt="" width="50" height="50" /></a>
+                        </div>
+                        <div class="post-meta">
+                            <p>
+                                <a class="meta-title" target="_blank" href="http://hao.jobbole.com/hotswapagent%ef%bc%9a%e6%94%af%e6%8c%81%e6%97%a0%e9%99%90%e6%ac%a1%e9%87%8d%e5%ae%9a%e4%b9%89%e8%bf%90%e8%a1%8c%e6%97%b6%e7%b1%bb%e4%b8%8e%e8%b5%84%e6%ba%90-2/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="HotswapAgent：支持无限次重定义运行时类与资源">HotswapAgent：支持无限次重定义运行时类与资源</a><br />
+                                <a href="http://hao.jobbole.com/category/java/java-development/" rel="category tag">开发流程增强工具</a>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                                </div>
+            </div>
+        	
+	<!-- BEGIN .container -->
+	<div class="container">
+	
+		<!-- BEGIN .grid-2 -->
+		<div class="grid-2">
+			
+						
+		</div>
+		<!-- END .grid-2 -->
+		
+		<!-- BEGIN .grid-2 -->
+		<div class="grid-2">
+			
+						
+		</div>
+		<!-- END .grid-2 -->
+		
+		<div class="clear"></div>
+			
+	</div>
+	<!-- END .container -->
+
+</div>
+<!-- END #sidebar -->
+<div class="clear"></div>	
+
+
+</div>
+<!-- END #wrapper -->
+
+<!-- BEGIN footer -->
+
+    <footer>
+
+        <!-- BEGIN .container -->
+        <div class="container">
+
+            <!-- BEGIN .grid-4 -->
+            <div class="grid-4">
+
+                <div id="text-3" class="widget widget_text"><h3 class="widget-title">关于伯乐在线博客</h3>			<div class="textwidget"><p>在这个信息爆炸的时代，人们已然被大量、快速并且简短的信息所包围。然而，我们相信：过多“快餐”式的阅读只会令人“虚胖”，缺乏实质的内涵。伯乐在线内容团队正试图以我们微薄的力量，把优秀的原创文章和译文分享给读者，为“快餐”添加一些“营养”元素。</p>
+<p><b>快速链接</b><br />
+<a target='_blank' href="http://blog.jobbole.com/87622/">网站使用指南 » </a><br />
+<a target='_blank' href="http://group.jobbole.com/category/feedback/thanks">问题反馈与求助 » </a><br />
+<a target='_blank' href="http://group.jobbole.com/22422/">加入我们 » </a><br />
+<a target='_blank' href="http://group.jobbole.com/158/">网站积分规则 » </a><br />
+<a target='_blank' href="http://group.jobbole.com/175/">网站声望规则 » </a></p>
+</div>
+		</div>
+            </div>
+            <!-- END .grid-4 -->
+
+            <!-- BEGIN .grid-4 -->
+            <div class="grid-4">
+
+                <div id="text-4" class="widget widget_text"><h3 class="widget-title">关注我们</h3>			<div class="textwidget"><p>新浪微博：<a href="http://weibo.com/jobbole" target='_blank'>@伯乐在线官方微博</a><br />
+RSS：<a href="http://blog.jobbole.com/feed/" target='_blank'>订阅地址</a><br />
+推荐微信号 <br />
+<img src='http://wx4.sinaimg.cn/small/63918611gy1fpy3pmhqpcj202s032aar.jpg' width='100' height='110' /><img src='http://wx2.sinaimg.cn/small/63918611gy1fpy5j1qub8j202s032jrn.jpg' width='100' height='110' /><img src='http://wx4.sinaimg.cn/small/63918611gy1fpy5j6cozdj202s032mxc.jpg' width='100' height='110' /></p>
+<p><strong>合作联系</strong><br />
+Email：<a href='mailto:bd@jobbole.com'>bd@Jobbole.com</a><br />
+QQ： 2302462408  （加好友请注明来意）</p>
+</div>
+		</div>
+            </div>
+            <!-- END .grid-4 -->
+
+            <!-- BEGIN .grid-4 -->
+            <div class="grid-4">
+
+                <div id="text-7" class="widget widget_text"><h3 class="widget-title">更多频道</h3>			<div class="textwidget"><p><a href="http://group.jobbole.com/?utm_source=blog.jobbole.com&amp;utm_medium=bottomText" target='_blank'>小组</a> &#8211; 好的话题、有启发的回复、值得信赖的圈子<br />
+<a href="http://top.jobbole.com/?utm_source=blog.jobbole.com&amp;utm_medium=bottomText" target='_blank'>头条</a> &#8211; 分享和发现有价值的内容与观点<br />
+<a href="https://www.mxdxlove.cn/?from=25" target='_blank'>面向对象相亲</a> &#8211; 为IT单身男女服务的相亲平台<br />
+<a href="http://hao.jobbole.com/?utm_source=blog.jobbole.com&amp;utm_medium=bottomText" target='_blank'>资源</a> &#8211; 优秀的工具资源导航<br />
+<a href="http://fanyi.jobbole.com/?utm_source=blog.jobbole.com&amp;utm_medium=bottomText" target='_blank'>翻译</a> &#8211; 翻译传播优秀的外文文章<br />
+<a href="http://blog.jobbole.com/?utm_source=blog.jobbole.com&amp;utm_medium=bottomText" target='_blank'>文章</a> &#8211; 国内外的精选文章<br />
+<a href="http://design.jobbole.com/?utm_source=blog.jobbole.com&amp;utm_medium=bottomText" target='_blank'>设计</a> &#8211; UI,网页，交互和用户体验<br />
+<a href="http://ios.jobbole.com/?utm_source=blog.jobbole.com&amp;utm_medium=bottomText" target='_blank'>iOS</a> &#8211; 专注iOS技术分享<br />
+<a href="http://android.jobbole.com/?utm_source=blog.jobbole.com&amp;utm_medium=bottomText" target='_blank'>安卓</a> &#8211; 专注Android技术分享<br />
+<a href="http://web.jobbole.com/?utm_source=blog.jobbole.com&amp;utm_medium=bottomText" target='_blank'>前端</a> &#8211; JavaScript, HTML5, CSS<br />
+<a href="http://www.importnew.com/?utm_source=blog.jobbole.com&amp;utm_medium=bottomText" target='_blank'>Java</a> &#8211; 专注Java技术分享<br />
+<a href="http://python.jobbole.com/?utm_source=blog.jobbole.com&amp;utm_medium=bottomText" target='_blank'>Python</a> &#8211; 专注Python技术分享</p>
+</div>
+		</div>
+            </div>
+            <!-- END .grid-4 -->
+
+            <div class="clear"></div>
+
+        </div>
+        <!-- END .container -->
+
+        <!-- BEGIN #bottom -->
+        <div id="bottom">
+
+            <!-- BEGIN .container -->
+            <div class="container">
+
+                <!-- BEGIN .grid-12 -->
+                <div class="grid-12">
+
+                    <p>&copy; 2019 伯乐在线
+                    <span style="margin: 0 40px;">
+                        <a href="http://blog.jobbole.com">文章</a>&nbsp;&nbsp;
+                        <a href="http://group.jobbole.com">小组</a>&nbsp;&nbsp;
+                        <a href="https://www.mxdxlove.cn/?from=25" target="_blank">相亲</a>&nbsp;&nbsp;
+                        <a href="http://group.jobbole.com/22422/">加入我们</a>&nbsp;&nbsp;
+                        <a href="http://group.jobbole.com/category/feedback/thanks/"><i class="fa fa-bullhorn"></i> 反馈</a>
+                    </span>
+                    <a target="_blank" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">沪ICP备14046347号-1</a>
+                    </p>
+                </div>
+                <!-- END .grid-12 -->
+
+                <div class="clear"></div>
+
+            </div>
+            <!-- END .container -->
+
+        </div>
+        <!-- END #bottom -->
+    </footer>
+
+    
+<!-- END footer -->
+
+
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+var thickboxL10n = {"next":"\u4e0b\u4e00\u9875 >","prev":"< \u4e0a\u4e00\u9875","image":"\u56fe\u50cf","of":"\/","close":"\u5173\u95ed","noiframes":"\u8fd9\u4e2a\u529f\u80fd\u9700\u8981iframe\u7684\u652f\u6301\u3002\u60a8\u53ef\u80fd\u7981\u6b62\u4e86iframe\u7684\u663e\u793a\uff0c\u6216\u60a8\u7684\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u6b64\u529f\u80fd\u3002","loadingAnimation":"http:\/\/blog.jobbole.com\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/thickbox/thickbox.js?ver=3.1-20121105'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/shortcode.min.js?ver=4.5.17'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-admin/js/media-upload.min.js?ver=4.5.17'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/comment-reply.min.js?ver=4.5.17'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var quicktagsL10n = {"closeAllOpenTags":"\u5173\u95ed\u6240\u6709\u6253\u5f00\u7684\u6807\u7b7e","closeTags":"\u5173\u95ed\u6807\u7b7e","enterURL":"\u8f93\u5165URL","enterImageURL":"\u8f93\u5165\u56fe\u50cfURL","enterImageDescription":"\u4e3a\u56fe\u50cf\u8f93\u5165\u63cf\u8ff0","textdirection":"\u6587\u672c\u65b9\u5411","toggleTextdirection":"\u5207\u6362\u7f16\u8f91\u5668\u6587\u672c\u4e66\u5199\u65b9\u5411","dfw":"\u514d\u6253\u6270\u5199\u4f5c\u6a21\u5f0f","strong":"\u7c97\u4f53","strongClose":"\u5173\u95ed\u7c97\u4f53\u6807\u7b7e","em":"\u659c\u4f53","emClose":"\u5173\u95ed\u659c\u4f53\u6807\u7b7e","link":"\u63d2\u5165\u94fe\u63a5","blockquote":"\u5757\u5f15\u7528","blockquoteClose":"\u5173\u95ed\u5757\u5f15\u7528\u6807\u7b7e","del":"\u5220\u9664\u7684\u6587\u5b57\uff08\u5220\u9664\u7ebf\uff09","delClose":"\u5173\u95ed\u5220\u9664\u7ebf\u6807\u7b7e","ins":"\u63d2\u5165\u7684\u6587\u5b57","insClose":"\u5173\u95ed\u63d2\u5165\u7684\u6587\u5b57\u6807\u7b7e","image":"\u63d2\u5165\u56fe\u50cf","ul":"\u9879\u76ee\u7b26\u53f7\u5217\u8868","ulClose":"\u5173\u95ed\u9879\u76ee\u7b26\u53f7\u5217\u8868\u6807\u7b7e","ol":"\u7f16\u53f7\u5217\u8868","olClose":"\u5173\u95ed\u7f16\u53f7\u5217\u8868\u6807\u7b7e","li":"\u5217\u8868\u9879\u76ee","liClose":"\u5173\u95ed\u5217\u8868\u9879\u76ee\u6807\u7b7e","code":"\u4ee3\u7801","codeClose":"\u5173\u95ed\u4ee3\u7801\u6807\u7b7e","more":"\u63d2\u5165\u201cMore\u201d\u6807\u7b7e"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/quicktags.min.js?ver=4.5.17'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/util/tag-editor/crayon_qt.js?ver=2.7.1.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var viewsCacheL10n = {"admin_ajax_url":"http:\/\/blog.jobbole.com\/wp-admin\/admin-ajax.php","post_id":"114633"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/wp-postviews/postviews-cache.js?ver=1.68'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/ready.js?ver=1.0'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/easing.js?ver=1.3'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/validate.js?ver=1.9.0'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/touchwipe.js?ver=1.1.1'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/caroufredsel.js?ver=5.5.0'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/flexslider.js?ver=2.0'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/jplayer.js?ver=2.1.0'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/fitvids.js?ver=1.0'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/selectnav.js?ver=0.11'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/effects.js?ver=1.11'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/wp-embed.min.js?ver=4.5.17'></script>
+
+
+<div id="full-btm">
+<a><img src="http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/back-btm.png" width="20" border=0 alt="跳到底部" title="跳到底部"></a>
+</div>
+
+<script type="text/javascript">
+jQuery('#full-btm').click(function(){
+    jQuery('html, body').animate({scrollTop:jQuery(document).height()}, 'slow');
+    return false;
+});
+</script>
+
+<div id="full-top">
+<a><img src="http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/back-top.png" width="20" border=0 alt="返回顶部" title="返回顶部"></a>
+</div>
+
+<script type="text/javascript">
+jQuery('#full-top').click(function(){
+    jQuery('html, body').animate({scrollTop:0}, 'slow');
+    return false;
+});
+
+</script>
+
+</body>
+<!-- END body -->
+
+</html>
+<!-- END html -->
+0
+
