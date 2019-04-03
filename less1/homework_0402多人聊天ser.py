@@ -1,6 +1,7 @@
+# 书写一个类似于qq群聊的聊天室,要求所有人都能收到所有人发送的消息,
+# 要求实现客户端和服务端
 import socket
 from threading import Thread
-
 
 def conns(conn, conn_addr):
     while 1:
@@ -9,12 +10,11 @@ def conns(conn, conn_addr):
             if not msg:
                 break
             msg = msg.decode()
-            print('收到{}的消息:{}'.format(conn_addr, msg))
-            return_msg = "已经收到你的消息--->" + msg
-            conn.send(return_msg.encode())
+            print('客户端说{}'.format(msg))
+            msg = str(input('服务器说：'))
+            conn.send(msg.encode())
         except Exception:
             break
-
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_addr = ('127.0.0.1', 41903)
