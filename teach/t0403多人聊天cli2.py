@@ -1,7 +1,7 @@
 import socket
 from threading import Thread
 ss = socket.socket()
-ss.connect(('127.0.0.1',9520))
+ss.connect(('127.0.0.1', 9520))
 
 
 def conn_send(ss):
@@ -23,8 +23,8 @@ def conn_recv(ss):
     print('接收程序已经结束')
 
 
-t1 = Thread(target=conn_send,args=(ss,))
-t2 = Thread(target=conn_recv,args=(ss,))
+t1 = Thread(target=conn_send, args=(ss,))
+t2 = Thread(target=conn_recv, args=(ss,))
 
 t1.start()
 t2.start()

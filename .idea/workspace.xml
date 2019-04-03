@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="521abacc-56c0-4f77-9ed1-d9c6dcf996a7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/teach/t0403多人聊天cli1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teach/t0403多人聊天cli2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teach/t0403多人聊天ser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/less0402/homework_0402多人聊天cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/less0402/homework_0402互动聊天cli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/less0402/homework_0402多人聊天ser.py" beforeDir="false" afterPath="$PROJECT_DIR$/less0402/homework_0402互动聊天ser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teach/t0403多人聊天cli2.py" beforeDir="false" afterPath="$PROJECT_DIR$/teach/t0403多人聊天cli2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +11,32 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/teach/t0403多人聊天ser.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/teach/t0403多人聊天cli2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -64,19 +84,19 @@
         <option value="$PROJECT_DIR$/less0403/test_l1.py" />
         <option value="$PROJECT_DIR$/less0403/test_s1.py" />
         <option value="$PROJECT_DIR$/teach/t0403多人聊天ser.py" />
-        <option value="$PROJECT_DIR$/teach/t0403多人聊天cli2.py" />
         <option value="$PROJECT_DIR$/teach/t0403多人聊天cli1.py" />
         <option value="$PROJECT_DIR$/less0402/homework_0402多人聊天ser.py" />
         <option value="$PROJECT_DIR$/less0402/homework_0402多人聊天cli.py" />
         <option value="$PROJECT_DIR$/less0402/homework_0402互动聊天cli.py" />
         <option value="$PROJECT_DIR$/teach/t0403web服务器.py" />
+        <option value="$PROJECT_DIR$/teach/t0403多人聊天cli2.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="551" />
-    <option name="y" value="58" />
-    <option name="width" value="952" />
+    <option name="x" value="287" />
+    <option name="y" value="31" />
+    <option name="width" value="1327" />
     <option name="height" value="970" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -87,12 +107,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="socket" type="b2602c69:ProjectViewProjectNode" />
               <item name="socket" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="socket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="socket" type="462c0819:PsiDirectoryNode" />
+              <item name="less0401" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="socket" type="b2602c69:ProjectViewProjectNode" />
@@ -108,7 +134,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="RunDashboard">
@@ -253,9 +278,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="551" y="58" width="952" height="970" extended-state="0" />
+    <frame x="287" y="31" width="1327" height="970" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1471536" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.058192957" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -274,13 +300,13 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15316117" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.264232" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32077625" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.40068492" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3405467" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.40068492" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -303,9 +329,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/less0401/cli2.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/less0401/cli1.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/less0401/ser1.py">
@@ -502,16 +525,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/teach/t0403多人聊天cli2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/less0402/homework_0402web服务器.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -519,13 +532,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/teach/t0403web服务器.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/teach/t0403web服务器.py" />
     <entry file="file://$PROJECT_DIR$/less0402/less0402_ser多线程cli2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -540,20 +547,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/teach/t0403多人聊天ser.py">
+    <entry file="file://$PROJECT_DIR$/teach/t0403多人聊天cli1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="286">
+          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/teach/t0403多人聊天cli1.py">
+    <entry file="file://$PROJECT_DIR$/less0401/cli1.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teach/t0403多人聊天ser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+        <state relative-caret-position="528">
+          <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teach/t0403多人聊天cli2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
