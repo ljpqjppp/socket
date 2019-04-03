@@ -1,5 +1,4 @@
-# 书写一个类似于qq群聊的聊天室,要求所有人都能收到所有人发送的消息,
-# 要求实现客户端和服务端
+# 互动聊天
 import socket
 from threading import Thread
 
